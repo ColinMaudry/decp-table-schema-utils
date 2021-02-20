@@ -8,4 +8,4 @@ Par exemple, si un marché est initialement attribué pour un montant de 100 000
 
 Pour le support de l'historique, il faut se tourner vers [les schémas réglementaires JSON et XML](https://www.data.gouv.fr/fr/datasets/referentiel-de-donnees-marches-publics/).
 
-[Valider des données DECP CSV avec Validata](https://go.validata.fr/table-schema?schema_url=https%3A%2F%2Fgithub.com%2FColinMaudry%2Fdecp-table-schema%2Fraw%2Fmain%2Fschema.json)
+[Valider des données DECP Table Schema avec Validata](https://go.validata.fr/table-schema?schema_url=https%3A%2F%2Fgithub.com%2FColinMaudry%2Fdecp-table-schema%2Fraw%2Fmain%2Fschema.json)
