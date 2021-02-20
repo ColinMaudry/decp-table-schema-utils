@@ -9,8 +9,8 @@
        "données essentielles"
     ],
     "countryCode":"FR",
-    "homepage":"https://github.com/ColinMaudry/decp-csv",
-    "path":"https://raw.githubusercontent.com/ColinMaudry/decp-csv/main/schema.json",
+    "homepage":"https://github.com/ColinMaudry/decp-table-schema",
+    "path":"https://raw.githubusercontent.com/ColinMaudry/decp-table-schema/main/schema.json",
     "licenses":[
        {
           "title":"Licence Ouverte",
@@ -22,7 +22,22 @@
        {
           "title":"Fichier valide (CSV)",
           "name":"exemple-valide",
-          "path":"https://raw.githubusercontent.com/ColinMaudry/decp-csv/main/exemple-valide.csv"
+          "path":"https://raw.githubusercontent.com/ColinMaudry/decp-table-schema/main/exemples/exemple-valide.csv"
+       },
+       {
+          "title":"Fichier valide (ODS)",
+          "name":"exemple-valide",
+          "path":"https://raw.githubusercontent.com/ColinMaudry/decp-table-schema/main/exemples/exemple-valide.ods"
+       },
+       {
+          "title":"Fichier valide (XLS)",
+          "name":"exemple-valide",
+          "path":"https://raw.githubusercontent.com/ColinMaudry/decp-table-schema/main/exemples/exemple-valide.xls"
+       },
+       {
+          "title":"Fichier valide (XLSX)",
+          "name":"exemple-valide",
+          "path":"https://raw.githubusercontent.com/ColinMaudry/decp-table-schema/main/exemples/exemple-valide.xlsx"
        }
     ],
     "sources":[
