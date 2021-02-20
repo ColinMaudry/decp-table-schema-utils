@@ -10,7 +10,7 @@
     ],
     "countryCode":"FR",
     "homepage":"https://github.com/ColinMaudry/decp-csv",
-    "path":"https://raw.githubusercontent.com/ColinMaudry/decp-csv/0.1.0/schema.json",
+    "path":"https://raw.githubusercontent.com/ColinMaudry/decp-csv/main/schema.json",
     "licenses":[
        {
           "title":"Licence Ouverte",
@@ -22,7 +22,7 @@
        {
           "title":"Fichier valide (CSV)",
           "name":"exemple-valide",
-          "path":"https://raw.githubusercontent.com/ColinMaudry/decp-csv/v0.1.0/exemple-valide.csv"
+          "path":"https://raw.githubusercontent.com/ColinMaudry/decp-csv/main/exemple-valide.csv"
        }
     ],
     "sources":[
