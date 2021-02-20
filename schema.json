@@ -1,0 +1,265 @@
+{
+    "$schema":"https://specs.frictionlessdata.io/schemas/table-schema.json",
+    "name":"Données essentielles de la commande publique",
+    "title":"Schéma tabulaire des données essentielles de la commande publique",
+    "description":"Spécification des données essentielles d'attributions de marchés publics.",
+    "keywords":[
+       "marché public",
+       "commande publique",
+       "données essentielles"
+    ],
+    "countryCode":"FR",
+    "homepage":"https://github.com/ColinMaudry/decp-csv",
+    "path":"https://raw.githubusercontent.com/ColinMaudry/decp-csv/0.1.0/schema.json",
+    "licenses":[
+       {
+          "title":"Licence Ouverte",
+          "name":"etalab-2.0",
+          "path":"https://www.etalab.gouv.fr/licence-ouverte-open-licence"
+       }
+    ],
+    "resources":[
+       {
+          "title":"Fichier valide (CSV)",
+          "name":"exemple-valide",
+          "path":"https://raw.githubusercontent.com/ColinMaudry/decp-csv/v0.1.0/exemple-valide.csv"
+       }
+    ],
+    "sources":[
+       {
+          "title":"Arrêté du 22 mars 2019 relatif aux données essentielles dans la commande publique",
+          "path":"https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000038318675/"
+       }
+    ],
+    "created":"2020-02-20",
+    "lastModified":"",
+    "version":"0.1.0",
+    "contributors":[
+       {
+          "title":"Colin Maudry",
+          "email":"colin@maudry.com",
+          "role":"author"
+        }
+    ],
+    "fields":[
+       {
+          "name":"id",
+          "description":"Numéro d'identification unique de marché public.",
+          "example":"201900056462312700",
+          "type":"string",
+          "constraints":{
+             "required":true,
+             "minLength":7,
+             "maxLength":16
+          }
+      },
+      {
+         "name":"uid",
+         "description":"Numéro d'identification unique de marché public (national)",
+         "example":"23350001600040201900056462312700",
+         "type":"string",
+         "constraints": {
+            "required":false,
+            "minLength":21,
+            "maxLength":30,
+            "unique": true
+         }
+     },
+      {
+         "name":"acheteur.id",
+         "description":"Identification de l'acheteur (SIRET)",
+         "example":"23350001600040",
+         "type":"string",
+         "constraints":{
+            "required":true,
+            "minLength":14,
+            "maxLength":14
+         }
+      },
+      {
+         "name":"acheteur.nom",
+         "description":"Nom de l'acheteur",
+         "example":"Conseil régional de Bretagne",
+         "type":"string",
+         "constraints":{
+            "required":true
+         }
+      },
+      {
+          "name":"nature",
+          "description":"Nature du marché",
+          "example":"Marché",
+          "type":"string",
+          "constraints":{
+             "required":true,
+             "enum": [
+               "Marché",
+               "Marché de partenariat",
+               "Accord-cadre",
+               "Marché subséquent"
+             ]
+          }
+      },
+      {
+         "name":"objet",
+         "description":"Objet du marché ou du lot",
+         "example":"Impression d'affiches pour l'évènement Urban Trail",
+         "type":"string",
+         "constraints":{
+            "required":true,
+            "maxLength":256
+         }
+      },
+      {
+         "name":"codeCPV",
+         "description":"Code CPV principal",
+         "example":"79311000",
+         "type":"string",
+         "constraints":{
+            "required": true,
+            "pattern": "(^[0-9]{8,8}(\\-[0-9])?)$"
+         }
+      },
+      {
+         "name":"procedure",
+         "description":"Procédure de passation de marché",
+         "example":"Procédure adaptée",
+         "type":"string",
+         "constraints":{
+            "required": true,
+            "enum": [
+              "Procédure adaptée",
+              "Appel d'offres ouvert",
+              "Appel d'offres restreint",
+              "Procédure avec négociation",
+              "Marché passé sans publicité ni mise en concurrence préalable",
+              "Dialogue compétitif"
+            ]
+         }
+      },
+      {
+         "name":"lieuExecution.code",
+         "description":"Code du lieu d'exécution",
+         "example":"35238",
+         "type":"string",
+         "constraints":{
+            "required":true
+         }
+      },
+      {
+         "name":"lieuExecution.typeCode",
+         "description":"Type de code du lieu d'exécution",
+         "example":"Code commune",
+         "type":"string",
+         "constraints":{
+            "required":true,
+            "enum": [
+              "Code postal",
+              "Code commune",
+              "Code arrondissement",
+              "Code canton",
+              "Code département",
+              "Code région",
+              "Code pays"
+            ]
+         }
+      },
+      {
+         "name":"lieuExecution.nom",
+         "description":"Nom du lieu d'exécution",
+         "example":"Rennes",
+         "type":"string",
+         "constraints":{
+            "required":true
+         }
+      },
+      {
+         "name":"dureeMois",
+         "description":"Durée initiale du marché",
+         "example":3,
+         "type":"integer",
+         "constraints":{
+            "required":true
+         }
+      },
+      {
+         "name":"dateNotification",
+         "description":"Date de notification",
+         "example":"2019-04-27",
+         "type":"date",
+         "format":"%Y-%m-%d",
+         "constraints":{
+            "required":true
+         }
+      },
+      {
+         "name":"datePublicationDonnees",
+         "description":"Date initiale de publication des données essentielles",
+         "example":"2019-04-29",
+         "type":"date",
+         "format":"%Y-%m-%d",
+         "constraints":{
+            "required":true
+         }
+      },
+      {
+         "name":"montant",
+         "description":"Montant forfaitaire ou estimé maximum HT",
+         "example":21800.10,
+         "type":"number",
+         "constraints":{
+            "required":true
+         }
+      },
+      {
+         "name":"formePrix",
+         "description":"Forme du prix",
+         "example":"Ferme",
+         "type":"string",
+         "constraints":{
+            "required":true,
+            "enum": [
+              "Ferme",
+              "Ferme et actualisable",
+              "Révisable"
+            ]
+         }
+      },{
+         "name":"titulaire.id",
+         "description":"Identifiant du titulaire",
+         "example":"81223113200034",
+         "type":"string",
+         "constraints":{
+            "required":true
+         }
+      },
+      {
+         "name":"titulaire.typeIdentifiant",
+         "description":"Type d'identifiant (titulaire)",
+         "example":"SIRET",
+         "type":"string",
+         "constraints":{
+            "required":true,
+            "enum": [
+              "SIRET",
+              "TVA",
+              "TAHITI",
+              "RIDET",
+              "FRWF",
+              "IREP",
+              "HORS-UE"
+            ]
+         }
+      },
+      {
+         "name":"titulaire.denominationSociale",
+         "description":"Dénomination sociale",
+         "example":"Colin Maudry",
+         "type":"string",
+         "constraints":{
+            "required":true
+         }
+      }
+    ],
+    "primaryKey":"id"
+ }
