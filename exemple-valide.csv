@@ -1,0 +1,2 @@
+id;uid;acheteur.id;acheteur.nom;nature;objet;codeCPV;procedure;lieuExecution.code;lieuExecution.typeCode;lieuExecution.nom;dureeMois;dateNotification;datePublicationDonnees;montant;formePrix;titulaire.id;titulaire.typeIdentifiant;titulaire.denominationSociale
+201900056462300;23350001600040201900056462300;23350001600040;Conseil régional de Bretagne;Marché;Impression d'affiches pour l'évènement Urban Trail;79311000;Procédure adaptée;35238;Code commune;Rennes;3;2019-04-27;2019-04-29;21800.10;Ferme;81223113200034;SIRET;Colin Maudry
