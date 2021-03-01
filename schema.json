@@ -267,12 +267,30 @@
          }
       },
       {
-         "name":"titulaire.denominationSociale",
-         "description":"Dénomination sociale",
-         "example":"Colin Maudry",
-         "type":"string",
+         "name": "titulaire.denominationSociale",
+         "description": "Dénomination sociale",
+         "example": "Colin Maudry",
+         "type": "string",
          "constraints":{
-            "required":true
+            "required": true
+         }
+      },
+      {
+         "name": "objetModification",
+         "description": "Objet de la modification",
+         "example": "Augmentation de la durée du marché à 12 mois.",
+         "type": "string",
+         "constraints":{
+            "required": false
+         }
+      },
+      {
+         "name": "donneesActuelles",
+         "description": "Données actuelles",
+         "example": 1,
+         "type": "boolean",
+         "constraints":{
+            "required": true
          }
       }
     ],
