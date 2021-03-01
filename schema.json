@@ -293,6 +293,5 @@
         "required": true
       }
     }
-  ],
-  "primaryKey": "id"
+  ]
 }
