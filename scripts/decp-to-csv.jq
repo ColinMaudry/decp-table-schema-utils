@@ -20,7 +20,8 @@
         "formePrix": $m.formePrix,
         "titulaire.id": .id,
         "titulaire.typeIdentifiant": .typeIdentifiant,
-        "titulaire.denominationSociale": .denominationSociale
+        "titulaire.denominationSociale": .denominationSociale,
+        "anomalies": $m.anomalies? | join(";")
     }
 )|
 map (
