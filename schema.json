@@ -292,6 +292,15 @@
       "constraints": {
         "required": true
       }
+    },
+    {
+      "name": "anomalies",
+      "description": "Anomalies",
+      "example": ".id de l'acheteur manquant, trop court ou null;.titulaires manquant ou vide",
+      "type": "string",
+      "constraints": {
+        "required": false
+      }
     }
   ]
 }
