@@ -6,4 +6,4 @@ json="$1"
 
 dir=`dirname "$0"`
 
-jq -f $dir/clean-anomalies.jq "$json"
+jq -f $dir/detect-anomalies.jq "$json"

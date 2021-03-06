@@ -16,6 +16,10 @@ end
                 addAnomaly(".id de l'acheteur manquant, trop court ou null")
             else
             . end
+        | if (._type == "Marché" and ( .acheteur.id as $acheteurId | [.titulaires[].id] | index($acheteurId)) ) then
+                addAnomaly(".id de l'acheteur et d'un titulaire identiques")
+            else
+            . end
         | if (._type == "Marché" and ((.montant | not) or (.montant < 0))) then
                 addAnomaly(".montant manquant ou négatif")
             else
