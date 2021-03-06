@@ -4,10 +4,12 @@
 
 csv="$1"
 
-xsv select "id,uid,titulaire.id,titulaire.typeIdentifiant,titulaire.denominationSociale,donneesActuelles" "$csv" > titulaires.csv
+xsv select "acheteur.id,acheteur.nom" "$csv" > acheteurs.csv
+
+xsv select "uid,id,titulaire.id,titulaire.typeIdentifiant,titulaire.denominationSociale,donneesActuelles" "$csv" > contrats.csv
 
 
-headersMarches="uid,id,acheteur.id,acheteur.nom,nature,objet,codeCPV,procedure,lieuExecution.code,lieuExecution.typeCode,lieuExecution.nom,dureeMois,dateNotification,datePublicationDonnees,montant,formePrix,objetModification,donneesActuelles,anomalies"
+headersMarches="uid,id,acheteur.id,nature,objet,codeCPV,procedure,lieuExecution.code,lieuExecution.typeCode,lieuExecution.nom,dureeMois,dateNotification,datePublicationDonnees,montant,formePrix,objetModification,donneesActuelles,anomalies"
 
 echo "$headersMarches" > marches.csv
 
