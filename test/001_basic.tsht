@@ -1,0 +1,7 @@
+#!/usr/bin/env tsht
+
+plan 1
+
+use 'jq'
+
+exec_ok "jq" "--version"
