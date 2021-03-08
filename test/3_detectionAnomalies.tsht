@@ -1,0 +1,34 @@
+#!/usr/bin/env tsht
+
+plan 8
+
+use 'jq'
+
+../scripts/detect-anomalies.sh files/anomalies/autres.json > test.json
+
+cat test.json | jq_equals 'if (.marches[0].anomalies | index(".id marché manquant ou null")) then "ok" else "ko" end' "\"ok\"" \
+".id marché manquant"
+
+cat test.json | jq_equals 'if (.marches[0].anomalies | index(".id acheteur manquant, trop court ou null")) then "ok" else "ko" end' "\"ok\"" \
+".id acheteur manquant"
+
+cat test.json | jq_equals 'if (.marches[0].anomalies | index(".dureeMois manquant ou égal à zéro")) then "ok" else "ko" end' "\"ok\"" \
+".dureeMois manquant"
+
+cat test.json | jq_equals 'if (.marches[0].anomalies | index(".titulaires manquant ou vide")) then "ok" else "ko" end' "\"ok\"" \
+".titulaires manquant"
+
+cat test.json | jq_equals 'if (.marches[0].anomalies | index(".montant manquant ou négatif")) then "ok" else "ko" end' "\"ok\"" \
+".montant manquant"
+
+../scripts/detect-anomalies.sh files/anomalies/idIdent.json > test.json
+
+cat test.json | jq_equals ".marches[0].anomalies[0]" "\".id acheteur et un titulaire identiques\""  ".id acheteur et un titulaire identiques"
+
+../scripts/detect-anomalies.sh files/anomalies/montantNegatif.json > test.json
+
+cat test.json | jq_equals ".marches[0].anomalies[0]" "\".montant manquant ou négatif\"" ".montant négatif"
+
+../scripts/detect-anomalies.sh files/anomalies/dureeMois0.json > test.json
+
+cat test.json | jq_equals ".marches[0].anomalies[0]" "\".dureeMois manquant ou égal à zéro\"" ".dureeMois égal à zéro"

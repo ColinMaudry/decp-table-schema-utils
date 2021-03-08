@@ -1,0 +1,23 @@
+#!/usr/bin/env tsht
+
+plan 20
+
+../scripts/decpJson-to-csv.sh files/test2.json > test.csv
+
+function testColumn {
+    xsv select $1 test.csv | tail -n +2
+}
+
+equals "582056511001052019QlZad5b0_C00
+582056511001052019QlZad5b0_C00" "`testColumn uid`" "uid"
+
+equals "50780417700040
+48441267100014" "`testColumn titulaire.id`" "titulaire.id"
+
+equals "SIRET
+SIRET" "`testColumn titulaire.typeIdentifiant`" "titulaire.typeIdentifiant"
+
+equals "dénomination sociale titulaire 1
+dénomination sociale titulaire 2" "`testColumn titulaire.denominationSociale`" "titulaire.denominationSociale"
+
+rm test.csv

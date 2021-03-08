@@ -1,0 +1,32 @@
+#!/usr/bin/env tsht
+
+plan 20
+
+../scripts/decpJson-to-csv.sh files/test1.json > test.csv
+
+function testColumn {
+    xsv select $1 test.csv | tail -n +2
+}
+
+equals "2019QlZad5b0_C00" "`testColumn id`" "id"
+equals "582056511001052019QlZad5b0_C00" "`testColumn uid`" "uid"
+equals "58205651100105" "`testColumn acheteur.id`" "acheteur.id"
+equals "nom de l'acheteur" "`testColumn acheteur.nom`" "acheteur.nom"
+equals "Marché" "`testColumn nature`" "nature"
+equals "objet du marché" "`testColumn objet`" "objet"
+equals "71000000" "`testColumn codeCPV`" "codeCPV"
+equals "Marché public négocié sans publicité ni mise en concurrence préalable" "`testColumn procedure`" "procedure"
+equals "FR" "`testColumn lieuExecution.code`" "lieuExecution.code"
+equals "Code pays" "`testColumn lieuExecution.typeCode`" "lieuExecution.typeCode"
+equals "FRANCE" "`testColumn lieuExecution.nom`" "lieuExecution.nom"
+equals "48" "`testColumn dureeMois`" "dureeMois"
+equals "2019-04-26" "`testColumn dateNotification`" "dateNotification"
+equals "2019-05-28" "`testColumn datePublicationDonnees`" "datePublicationDonnees"
+equals "50688.19" "`testColumn montant`" "montant"
+equals "Révisable" "`testColumn formePrix`" "formePrix"
+equals "50780417700040" "`testColumn titulaire.id`" "titulaire.id"
+equals "SIRET" "`testColumn titulaire.typeIdentifiant`" "titulaire.typeIdentifiant"
+equals "dénomination sociale titulaire 1" "`testColumn titulaire.denominationSociale`" "titulaire.denominationSociale"
+equals "anomalie 1;anomalie 2" "`testColumn anomalies`" "anomalies"
+
+rm test.csv
