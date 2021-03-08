@@ -10,19 +10,19 @@ end
         .marches[]
 
         | if ((.id | not) or (.id | length) == 0) then
-                addAnomaly(".id du marché manquant ou null")
+                addAnomaly(".id marché manquant ou null")
             else
             . end
         # => 18 marchés au 7 mars
 
         | if (._type == "Marché" and ((.acheteur.id | not) or ((.acheteur.id | length) <= 8)) ) then
-                addAnomaly(".id de l'acheteur manquant, trop court ou null")
+                addAnomaly(".id acheteur manquant, trop court ou null")
             else
             . end
         # => 77 marchés au 7 mars
 
         | if (._type == "Marché" and ( .acheteur.id as $acheteurId | [.titulaires[]?.id] | index($acheteurId)) ) then
-                addAnomaly(".id de l'acheteur et d'un titulaire identiques")
+                addAnomaly(".id acheteur et un titulaire identiques")
             else
             . end
         # => 88 marchés au 7 mars
