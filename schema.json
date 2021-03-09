@@ -59,8 +59,8 @@
   "fields": [
     {
       "name": "id",
-      "description": "Numéro d'identification unique de marché public.",
-      "example": "201900056462312700",
+      "title": "Numéro d'identification unique de marché public.",
+      "description": "Les 4 premiers caractères sont l'année de notification, de 1 à 10 caractères l'identifiant internet, les deux derniers caractères sont le numéro de séquence (nombre de modifications).",
       "type": "string",
       "constraints": {
         "required": true,
@@ -70,8 +70,9 @@
     },
     {
       "name": "uid",
-      "description": "Numéro d'identification unique de marché public (national)",
-      "example": "23350001600040201900056462312700",
+      "title": "Numéro d'identification unique de marché public (national)",
+      "description": "Identifiant du marché, préfixé avec le SIRET de l'acheteur pour être unique au niveau national.",
+      "example": "233500016000402019056462312700",
       "type": "string",
       "constraints": {
         "required": false,
@@ -81,7 +82,8 @@
     },
     {
       "name": "acheteur.id",
-      "description": "Identification de l'acheteur (SIRET)",
+      "title": "Identification de l'acheteur (SIRET)",
+      "description": "En cas de groupement de commande, c'est le SIRET du mandataire.",
       "example": "23350001600040",
       "type": "string",
       "constraints": {
@@ -92,7 +94,7 @@
     },
     {
       "name": "acheteur.nom",
-      "description": "Nom de l'acheteur",
+      "title": "Nom de l'acheteur",
       "example": "Conseil régional de Bretagne",
       "type": "string",
       "constraints": {
@@ -101,7 +103,7 @@
     },
     {
       "name": "nature",
-      "description": "Nature du marché",
+      "title": "Nature du marché",
       "example": "Marché",
       "type": "string",
       "constraints": {
@@ -116,7 +118,8 @@
     },
     {
       "name": "objet",
-      "description": "Objet du marché ou du lot",
+      "title": "Objet du marché ou du lot",
+      "description": "Description synthétique de l'objet du marché ou du lot.",
       "example": "Impression d'affiches pour l'évènement Urban Trail",
       "type": "string",
       "constraints": {
@@ -126,7 +129,8 @@
     },
     {
       "name": "codeCPV",
-      "description": "Code CPV principal",
+      "title": "Code CPV principal",
+      "description": "Nomenclature européenne permettant d'identifier les catégories de biens et de service faisant l'objet du marché (http://simap.ted.europa.eu/web/simap/cpv). Même si toléré, il préférable d'omettre le caractère de contrôle (-9))",
       "example": "79311000",
       "type": "string",
       "constraints": {
@@ -136,7 +140,8 @@
     },
     {
       "name": "procedure",
-      "description": "Procédure de passation de marché",
+      "title": "Procédure de passation de marché",
+      "description": "La procédure de passation de marché utilisée par l'acheteur.",
       "example": "Procédure adaptée",
       "type": "string",
       "constraints": {
@@ -153,7 +158,8 @@
     },
     {
       "name": "lieuExecution.code",
-      "description": "Code du lieu d'exécution",
+      "title": "Code du lieu d'exécution",
+      "description": "Code du lieu d'exécution (code postal, commune, canton, arrondissement, département, région, pays). Les codes INSEE sont à privilégier aux dépens du code postal.",
       "example": "35238",
       "type": "string",
       "constraints": {
@@ -162,7 +168,8 @@
     },
     {
       "name": "lieuExecution.typeCode",
-      "description": "Type de code du lieu d'exécution",
+      "title": "Type de code du lieu d'exécution",
+      "description": "Le type de code utilisé pour désigner le lieu d'exécution. Hormis le « Code postal », les codes sont des codes géographiques gérés par l'INSEE (http://www.insee.fr/fr/methodes/nomenclatures/cog/default.asp)",
       "example": "Code commune",
       "type": "string",
       "constraints": {
@@ -189,7 +196,8 @@
     },
     {
       "name": "dureeMois",
-      "description": "Durée initiale du marché",
+      "title": "Durée initiale du marché",
+      "description": "La durée du marché, en mois, telle que définie au moment de la publication des données. Si une fois les données initiales du marché publiées une modification de la durée du marché intervient, elle doit être retranscrite via un objet enfant de Modifications et la propriété Duree initiale ne doit pas être modifiée. La durée initale du marché comprend la durée des tranches et reconductions potentielles.",
       "example": 3,
       "type": "integer",
       "constraints": {
@@ -198,7 +206,8 @@
     },
     {
       "name": "dateNotification",
-      "description": "Date de notification",
+      "title": "Date de notification",
+      "description": "Date à laquelle le marché a été notifié au(x) titulaire(s), au format AAAA-MM-JJ.",
       "example": "2019-04-27",
       "type": "date",
       "format": "%Y-%m-%d",
@@ -208,7 +217,8 @@
     },
     {
       "name": "datePublicationDonnees",
-      "description": "Date initiale de publication des données essentielles",
+      "title": "Date de publication des données",
+      "description": "Date à laquelle les données du marché décrit ont été publiées. Cette date est mise à jour en cas de modification du marché.",
       "example": "2019-04-29",
       "type": "date",
       "format": "%Y-%m-%d",
@@ -218,7 +228,7 @@
     },
     {
       "name": "montant",
-      "description": "Montant forfaitaire ou estimé maximum HT",
+      "title": "Montant forfaitaire ou estimé maximum HT",
       "example": 21800.1,
       "type": "number",
       "constraints": {
@@ -227,7 +237,8 @@
     },
     {
       "name": "formePrix",
-      "description": "Forme du prix",
+      "title": "Forme du prix",
+      "description": "Ferme : le prix est fixé pour toute la durée marché. Ferme et actualisable : le prix peut évoluer périodiquement selon des conditions prévues dans le contrat initial (ex: variation d'indice). Révisable : l'acheteur et le titulaire peuvent s'entendre sur une modification du prix après la signature du marché.)",
       "example": "Ferme",
       "type": "string",
       "constraints": {
@@ -250,7 +261,8 @@
     },
     {
       "name": "titulaire.typeIdentifiant",
-      "description": "Type d'identifiant (titulaire)",
+      "title": "Type d'identifiant (titulaire)",
+      "description": "Types d'identifiants possibles (favoriser le SIRET) : SIRET, TVA, TAHITI, RIDET, FRWF, IREP, UE, HORS-UE.",
       "example": "SIRET",
       "type": "string",
       "constraints": {
@@ -268,7 +280,8 @@
     },
     {
       "name": "titulaire.denominationSociale",
-      "description": "Dénomination sociale",
+      "title": "Dénomination sociale",
+      "description": "Nom de l'opérateur économique intervenant sur le marché",
       "example": "Colin Maudry",
       "type": "string",
       "constraints": {
@@ -277,7 +290,7 @@
     },
     {
       "name": "objetModification",
-      "description": "Objet de la modification",
+      "title": "Objet de la modification",
       "example": "Augmentation de la durée du marché à 12 mois.",
       "type": "string",
       "constraints": {
@@ -286,16 +299,18 @@
     },
     {
       "name": "donneesActuelles",
-      "description": "Données actuelles",
+      "title": "Données actuelles",
+      "description": "Indique si cette ligne contient les données les plus récentes pour ce marché.",
       "example": "true",
       "type": "boolean",
       "constraints": {
-        "required": true
+        "required": false
       }
     },
     {
       "name": "anomalies",
-      "description": "Anomalies",
+      "title": "Anomalies",
+      "description": "Les anomalies détéctées dans les données de ce marché, séparées par un point-virgule.",
       "example": ".id de l'acheteur manquant, trop court ou null;.titulaires manquant ou vide",
       "type": "string",
       "constraints": {
