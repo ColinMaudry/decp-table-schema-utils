@@ -287,7 +287,7 @@
     {
       "name": "donneesActuelles",
       "description": "Données actuelles",
-      "example": 1,
+      "example": "true",
       "type": "boolean",
       "constraints": {
         "required": true
