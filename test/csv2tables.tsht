@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+function testColumn {
+    xsv select $1 test.csv | tail -n +2
+}
+
+exec_ok "../scripts/decpCsv-to-csvTables.sh" "../exemples/exemple-valide.csv"\
+"Le script decpCsv-to-csvTables.sh s'exécute sans erreur."
+file_exists "marches.csv"
+file_exists "acheteurs.csv"
+file_exists "contrats.csv"
+
+equals `cat marches.csv | wc -l` "3" "La table marches.csv a 2 marchés"
+equals `cat contrats.csv | wc -l` "5" "La table marches.csv a 5 contrats"
+equals `cat acheteurs.csv | wc -l` "5" "La table acheteurs.csv a 1 acheteur"
