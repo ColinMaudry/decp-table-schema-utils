@@ -4,6 +4,11 @@ plan 8
 
 use 'jq'
 
+
+echo "==========================================================="
+echo "Détection des anomalies et annotation des données"
+echo "==========================================================="
+
 ../scripts/detect-anomalies.sh files/anomalies/autres.json > test.json
 
 cat test.json | jq_equals 'if (.marches[0].anomalies | index(".id marché manquant ou null")) then "ok" else "ko" end' "\"ok\"" \

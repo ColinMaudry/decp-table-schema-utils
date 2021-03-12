@@ -1,3 +1,5 @@
 test/.tsht
+test/*.csv
+test/*.json
 test.json
 test.csv

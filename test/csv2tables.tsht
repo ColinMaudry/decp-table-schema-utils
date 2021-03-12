@@ -4,8 +4,16 @@ function testColumn {
     xsv select $1 test.csv | tail -n +2
 }
 
+echo "==========================================================="
+echo "Conversion CSV => tables de données"
+echo "==========================================================="
+
+
 exec_ok "../scripts/decpCsv-to-csvTables.sh" "../exemples/exemple-valide.csv"\
 "Le script decpCsv-to-csvTables.sh s'exécute sans erreur."
+
+../scripts/decpCsv-to-csvTables.sh ../exemples/exemple-valide.csv
+
 file_exists "marches.csv"
 file_exists "acheteurs.csv"
 file_exists "contrats.csv"
