@@ -37,3 +37,7 @@ cat test.json | jq_equals ".marches[0].anomalies[0]" "\".montant manquant ou né
 ../scripts/detect-anomalies.sh files/anomalies/dureeMois0.json > test.json
 
 cat test.json | jq_equals ".marches[0].anomalies[0]" "\".dureeMois manquant ou égal à zéro\"" ".dureeMois égal à zéro"
+
+../scripts/detect-anomalies.sh files/anomalies/dureeMois1201.json > test.json
+
+cat test.json | jq_equals ".marches[0].anomalies[0]" "\".dureeMois a une valeur supérieure à 100 ans (1200)\"" ".dureeMois supérieure à 1200"

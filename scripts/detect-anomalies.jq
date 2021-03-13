@@ -51,6 +51,11 @@ end
             . end
         # => 19 marchés au 7 mars
 
+        | if ((.dureeMois) and (.dureeMois > 1200)) then
+                addAnomaly(".dureeMois a une valeur supérieure à 100 ans (1200)")
+            else
+            . end
+
         # 958 marchés ont une de ces anomalies au 7 mars 2021
     ]
 }

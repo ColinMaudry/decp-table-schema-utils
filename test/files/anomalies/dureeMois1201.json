@@ -1,0 +1,36 @@
+{
+  "marches": [
+    {
+      "id": "2019QlZad5b0_C00",
+      "source": "source",
+      "uid": "582056511001052019QlZad5b0_C00",
+      "acheteur": {
+        "id": "75489760043173",
+        "nom": "nom de l'acheteur"
+      },
+      "_type": "Marché",
+      "nature": "Marché",
+      "objet": "objet du marché",
+      "codeCPV": "71000000",
+      "procedure": "Marché public négocié sans publicité ni mise en concurrence préalable",
+      "lieuExecution": {
+        "code": "FR",
+        "typeCode": "Code pays",
+        "nom": "FRANCE"
+      },
+      "dureeMois": 1201,
+      "montant": 34000,
+      "dateNotification": "2019-04-26",
+      "datePublicationDonnees": "2019-05-28",
+      "formePrix": "Révisable",
+      "titulaires": [
+        {
+          "typeIdentifiant": "SIRET",
+          "id": "50780417700040",
+          "denominationSociale": "dénomination sociale titulaire 1"
+        }
+      ],
+      "modifications": []
+    }
+  ]
+}
