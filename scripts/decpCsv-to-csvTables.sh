@@ -11,4 +11,4 @@ xsv select "uid,id,titulaire.id,titulaire.typeIdentifiant,titulaire.denomination
 
 headersMarches="uid,id,acheteur.id,nature,objet,codeCPV,procedure,lieuExecution.code,lieuExecution.typeCode,lieuExecution.nom,dureeMois,dateNotification,datePublicationDonnees,montant,formePrix,objetModification,donneesActuelles,anomalies"
 
-xsv select "$headersMarches" "$csv" | tail -n +2 | sort -u > marches.csv
+xsv select "$headersMarches" "$csv" | tail -n +2 | grep ",$" | sort -u | sed "s/,,/,NULL,/g" | sed -E "s/[+-]0[0-9]\\:00//g"  > marches.csv
