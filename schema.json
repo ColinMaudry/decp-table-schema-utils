@@ -60,7 +60,8 @@
     {
       "name": "id",
       "title": "Numéro d'identification unique de marché public.",
-      "description": "Les 4 premiers caractères sont l'année de notification, de 1 à 10 caractères l'identifiant internet, les deux derniers caractères sont le numéro de séquence (nombre de modifications).",
+      "description": "Les 4 premiers caractères sont l'année de notification, de 1 à 10 caractères l'identifiant internet, les deux derniers caractères sont le numéro de séquence (nombre de modifications : 00 pour les données initiales, 01 pour la première modification, etc).",
+      "example": "2019056462312700",
       "type": "string",
       "constraints": {
         "required": true,
@@ -95,6 +96,7 @@
     {
       "name": "acheteur.nom",
       "title": "Nom de l'acheteur",
+      "description": "En cas de groupement de commande, c'est le nom du mandataire.",
       "example": "Conseil régional de Bretagne",
       "type": "string",
       "constraints": {
@@ -169,7 +171,7 @@
     {
       "name": "lieuExecution.typeCode",
       "title": "Type de code du lieu d'exécution",
-      "description": "Le type de code utilisé pour désigner le lieu d'exécution. Hormis le « Code postal », les codes sont des codes géographiques gérés par l'INSEE (http://www.insee.fr/fr/methodes/nomenclatures/cog/default.asp)",
+      "description": "Le type de code utilisé pour désigner le lieu d'exécution. Hormis le Code postal, les codes sont des codes géographiques gérés par l'INSEE (http://www.insee.fr/fr/methodes/nomenclatures/cog/default.asp)",
       "example": "Code commune",
       "type": "string",
       "constraints": {
@@ -187,7 +189,7 @@
     },
     {
       "name": "lieuExecution.nom",
-      "description": "Nom du lieu d'exécution",
+      "title": "Nom du lieu d'exécution",
       "example": "Rennes",
       "type": "string",
       "constraints": {
@@ -197,7 +199,7 @@
     {
       "name": "dureeMois",
       "title": "Durée initiale du marché",
-      "description": "La durée du marché, en mois, telle que définie au moment de la publication des données. Si une fois les données initiales du marché publiées une modification de la durée du marché intervient, elle doit être retranscrite via un objet enfant de Modifications et la propriété Duree initiale ne doit pas être modifiée. La durée initale du marché comprend la durée des tranches et reconductions potentielles.",
+      "description": "La durée du marché, en mois. La durée du marché comprend la durée des tranches et reconductions potentielles.",
       "example": 3,
       "type": "integer",
       "constraints": {
@@ -207,7 +209,7 @@
     {
       "name": "dateNotification",
       "title": "Date de notification",
-      "description": "Date à laquelle le marché a été notifié au(x) titulaire(s), au format AAAA-MM-JJ.",
+      "description": "Date à laquelle le marché ou la modification du marché a été notifié au(x) titulaire(s), au format AAAA-MM-JJ.",
       "example": "2019-04-27",
       "type": "date",
       "format": "%Y-%m-%d",
@@ -218,7 +220,7 @@
     {
       "name": "datePublicationDonnees",
       "title": "Date de publication des données",
-      "description": "Date à laquelle les données du marché décrit ont été publiées. Cette date est mise à jour en cas de modification du marché.",
+      "description": "Date à laquelle les données du marché ou de la modification du marché ont été publiées, au format AAAA-MM-JJ.",
       "example": "2019-04-29",
       "type": "date",
       "format": "%Y-%m-%d",
@@ -228,7 +230,8 @@
     },
     {
       "name": "montant",
-      "title": "Montant forfaitaire ou estimé maximum HT",
+      "title": "Montant",
+      "description": "Montant forfaitaire ou estimé maximum HT du marché attribué.",
       "example": 21800.1,
       "type": "number",
       "constraints": {
@@ -238,7 +241,7 @@
     {
       "name": "formePrix",
       "title": "Forme du prix",
-      "description": "Ferme : le prix est fixé pour toute la durée marché. Ferme et actualisable : le prix peut évoluer périodiquement selon des conditions prévues dans le contrat initial (ex: variation d'indice). Révisable : l'acheteur et le titulaire peuvent s'entendre sur une modification du prix après la signature du marché.)",
+      "description": "Ferme : le prix est fixé pour toute la durée marché. Ferme et actualisable : le prix peut évoluer périodiquement selon des conditions prévues dans le contrat initial (ex : variation d'indice). Révisable : l'acheteur et le(s) titulaire(s) peuvent s'entendre sur une modification du prix après la signature du marché.)",
       "example": "Ferme",
       "type": "string",
       "constraints": {
@@ -252,7 +255,8 @@
     },
     {
       "name": "titulaire.id",
-      "description": "Identifiant du titulaire",
+      "title": "Identifiant du titulaire",
+      "description": "Identifiant de l'opérateur économique auquel l'acheteur a attribué ce marché. En cas de marché multi-attributaires, il s'agit d'un des attributaires du marché.",
       "example": "81223113200034",
       "type": "string",
       "constraints": {
@@ -281,7 +285,7 @@
     {
       "name": "titulaire.denominationSociale",
       "title": "Dénomination sociale",
-      "description": "Nom de l'opérateur économique intervenant sur le marché",
+      "description": "Nom de l'opérateur économique auquel l'acheteur a attribué ce marché. En cas de marché multi-attributaires, il s'agit d'un des attributaires du marché.",
       "example": "Colin Maudry",
       "type": "string",
       "constraints": {
@@ -291,6 +295,7 @@
     {
       "name": "objetModification",
       "title": "Objet de la modification",
+      "description": "Raisons de la modification du marché. Ce champ est vide pour une attribution et doit être rempli en cas de modification.",
       "example": "Augmentation de la durée du marché à 12 mois.",
       "type": "string",
       "constraints": {
@@ -300,7 +305,7 @@
     {
       "name": "donneesActuelles",
       "title": "Données actuelles",
-      "description": "Indique si cette ligne contient les données les plus récentes pour ce marché.",
+      "description": "Indique si cette ligne contient les données les plus récentes pour ce marché (données initiales non modifiées ou dernière modification).",
       "example": "true",
       "type": "boolean",
       "constraints": {
