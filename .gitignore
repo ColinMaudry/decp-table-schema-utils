@@ -3,3 +3,4 @@ test/*.csv
 test/*.json
 test.json
 test.csv
+scripts/config.sh
