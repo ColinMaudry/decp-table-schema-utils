@@ -1,3 +1,11 @@
+def getRootId(data):
+    if ((data.id[-2:] | tonumber) == (data.modifications | length))
+    then
+    data.id[:((data.id |length) - 2)]
+    else
+    data.id
+    end
+    ;
 [.marches[] | select(._type == "Marché" and (.titulaires? | length) > 0)] | map(
 . as $m |
 
@@ -12,6 +20,8 @@
  ($modifications.titulaires // .titulaires) | map (
     {
         "id": $m.id?,
+        "rootId": getRootId({"id":$m.id?,"modifications": $m.modifications}),
+        "seq": $m.modifications | length,
         "uid": $m.uid?,
         "acheteur.id": $m.acheteur.id?,
         "acheteur.nom": $m.acheteur.nom?,
