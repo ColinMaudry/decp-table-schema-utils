@@ -1,5 +1,5 @@
 def getRootId(data):
-    if ((data.id[-2:] | tonumber) == (data.modifications | length))
+    if ((data.id[-2:] | tonumber?) == (data.modifications | length))
     then
     data.id[:((data.id |length) - 2)]
     else
@@ -20,7 +20,7 @@ def getRootId(data):
  ($modifications.titulaires // .titulaires) | map (
     {
         "id": $m.id?,
-        "rootId": getRootId({"id":$m.id?,"modifications": $m.modifications}),
+        "rootId": getRootId({"id":$m.uid?,"modifications": $m.modifications?}),
         "seq": $m.modifications | length,
         "uid": $m.uid?,
         "acheteur.id": $m.acheteur.id?,
