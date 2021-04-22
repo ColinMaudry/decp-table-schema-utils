@@ -8,7 +8,7 @@ echo "Génération de la requête SQL de chargement..."
 
 rm $dir/../sql/loadData.sql
 
-for table in acheteurs contrats titulaires marches
+for table in organisations marches
 do
     echo "
     TRUNCATE TABLE $table;
@@ -17,7 +17,7 @@ do
 done
 
 echo "Envoi des données vers le serveur..."
-scp $dir/../csv/*.csv $sshHost:$scpPath
+scp -C $dir/../csv/*.csv $sshHost:$scpPath
 
 #echo "Ajout du bon path dans les requêtes SQL..."
 
