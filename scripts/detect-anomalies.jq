@@ -45,6 +45,18 @@ end
             . end
         # => 262 marchés au 7 mars
 
+        | if (._type == "Marché" and (.titulaires? | length > 0) and (.titulaires? | map(((.id // "123") | match("^0+$").string)
+        )
+         | length > 0)) then  addAnomaly(".titulaires.id ne contient que des zéros")
+            else
+            . end
+
+        | if (._type == "Marché" and (.titulaires? | length > 0) and (.titulaires? | map((if (.id? | length < 14) and (.typeIdentifiant? = "SIRET") then "ko" else empty end)
+        )
+         | length > 0)) then  addAnomaly(".titulaires.id est trop court")
+            else
+            . end
+
         | if ((.dureeMois | not) or (.dureeMois <= 0)) then
                 addAnomaly(".dureeMois manquant ou égal à zéro")
             else
