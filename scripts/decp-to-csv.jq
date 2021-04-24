@@ -14,19 +14,20 @@ def getRootId(data):
     "objetModification": ($mod.objetModification // .objetModification),
     "dureeMois": ($mod.dureeMois // .dureeMois),
     "montant": ($mod.montant // .montant),
-    "titulaires": ($mod.titulaires // .titulaires)
+    "titulaires": ($mod.titulaires // .titulaires),
+    "datePublicationDonneesModification": ($mod.datePublicationDonneesModification // .datePublicationDonneesModification)
 })) as $modifications
      |
  ($modifications.titulaires // .titulaires) | map (
     {
-        "id": $m.id?,
-        "rootId": getRootId({"id":$m.uid?,"modifications": $m.modifications?}),
+        "id": ($m.id? | tostring),
+        "rootId": getRootId({"id":($m.uid? | tostring),"modifications": $m.modifications?}),
         "seq": $m.modifications | length,
-        "uid": $m.uid?,
-        "acheteur.id": $m.acheteur.id?,
+        "uid": ($m.uid? | tostring),
+        "acheteur.id": ($m.acheteur.id? | tostring),
         "acheteur.nom": $m.acheteur.nom?,
         "nature": $m.nature?,
-        "objet": $m.objet?,
+        "objet": ($m.objet? | gsub("\\\n"; " ")),
         "codeCPV": $m.codeCPV?,
         "procedure": $m.procedure?,
         "lieuExecution.code": $m.lieuExecution.code?,
@@ -34,10 +35,10 @@ def getRootId(data):
         "lieuExecution.nom": $m.lieuExecution.nom?,
         "dureeMois": ($modifications.dureeMois // $m.dureeMois?),
         "dateNotification": $m.dateNotification?,
-        "datePublicationDonnees": (if $m.modifications[0] then $modifications.datePublicationDonneesModification else $m.datePublicationDonnees end),
+        "datePublicationDonnees": ($modifications.datePublicationDonneesModification // $m.datePublicationDonnees) | gsub("[\\+\\-]\\d\\d\\:\\d\\d$";""),
         "montant": $m.montant?,
         "formePrix": $m.formePrix?,
-        "titulaire.id": .id?,
+        "titulaire.id": (.id? | tostring),
         "titulaire.typeIdentifiant": .typeIdentifiant?,
         "titulaire.denominationSociale": .denominationSociale?,
         "objetModification": $modifications.objetModification,
