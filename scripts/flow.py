@@ -3,7 +3,7 @@ from dataflows import sort_rows, filter_rows, find_replace, delete_fields, set_t
 
 import subprocess
 
-def simple_json():
+def decp_processing():
     flow = Flow(
         load("json.csv"),
         set_type("donneesActuelles", type="boolean"),
@@ -12,7 +12,8 @@ def simple_json():
         set_type("codeCPV", type="string"),
         set_type("lieuExecution.code", type="string"),
         # donnees_actuelles,
-        sort_rows('{rootId}:{seq}', resources = 0, reverse = True),
+        sort_rows('seq', resources = 0, reverse = True),
+        donnees_actuelles,
         dump_to_path("decp")
 
     )
@@ -24,7 +25,24 @@ def simple_json():
 def json_to_csv() :
      subprocess.call(['scripts/decpJson-to-csv.sh','decp.json'])
 
+def donnees_actuelles(rows) :
+    print()
+    prevRootId = ""
+    donneesActuelles = False
+
+    for row in rows :
+        if row['rootId'] != prevRootId :
+            donneesActuelles = True
+            prevSeq = row['seq']
+            prevRootId = row['rootId']
+
+        elif row['rootId'] == prevRootId and row['seq'] != prevSeq :
+            donneesActuelles = False
+            prevSeq = row['seq']
+
+        row['donneesActuelles'] = donneesActuelles
+        yield row
 
 if __name__ == '__main__':
     json_to_csv()
-    simple_json()
+    decp_processing()
