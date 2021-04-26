@@ -1,9 +1,6 @@
 from dataflows import Flow, load, dump_to_path, dump_to_zip, printer, add_metadata, update_resource
 from dataflows import sort_rows, filter_rows, find_replace, delete_fields, set_type, validate, unpivot
-import sqlite3 as sqlite
 import subprocess
-import pandas as pd
-from pathlib import Path
 from datapackage_to_datasette import datapackage_to_datasette, DataImportError
 
 def decp_processing():
