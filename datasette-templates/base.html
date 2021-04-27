@@ -33,7 +33,7 @@
             {% if show_logout %}
             <form action="{{ urls.logout() }}" method="post">
                 <input type="hidden" name="csrftoken" value="{{ csrftoken() }}">
-                <button class="button-as-link">Déconnexion</button>
+                <button class="button-as-link">Log out</button>
             </form>{% endif %}
         </div>
     </details>{% endif %}
