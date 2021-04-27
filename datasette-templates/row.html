@@ -17,7 +17,7 @@
 
 {% block nav %}
     <p class="crumbs">
-        <a href="{{ urls.instance() }}">home</a> /
+        <a href="{{ urls.instance() }}">accueil</a> /
         <a href="{{ urls.database(database) }}">{{ database }}</a> /
         <a href="{{ urls.table(database, table) }}">{{ table }}</a>
     </p>
@@ -29,12 +29,12 @@
 
 {% block description_source_license %}{% include "_description_source_license.html" %}{% endblock %}
 
-<p>This data as {% for name, url in renderers.items() %}<a href="{{ url }}">{{ name }}</a>{{ ", " if not loop.last }}{% endfor %}</p>
+<p>Télcharger ces données au format {% for name, url in renderers.items() %}<a href="{{ url }}">{{ name }}</a>{{ ", " if not loop.last }}{% endfor %}</p>
 
 {% include custom_table_templates %}
 
 {% if foreign_key_tables %}
-    <h2>Links from other tables</h2>
+    <h2>Liens depuis d'autres tables</h2>
     <ul>
         {% for other in foreign_key_tables %}
             <li>
