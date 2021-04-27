@@ -22,7 +22,7 @@ def decp_processing():
 
 
 def json_to_csv() :
-     subprocess.call(['scripts/decpJson-to-csv.sh','decp.json'])
+     subprocess.call(['scripts/decpJson-to-csv.sh','test.json'])
 
 def donnees_actuelles(rows) :
     prevRootId = ""
@@ -47,7 +47,7 @@ def load_to_sqlite() :
         datapackage_to_datasette(
             'decp/decp.db',
             'decp/datapackage.json',
-            'decp/datasette.json',
+            '/dev/null',
             write_mode='replace'
         )
     except DataImportError:
