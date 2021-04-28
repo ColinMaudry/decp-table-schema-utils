@@ -1,0 +1,17 @@
+section.content > div.table-wrapper {
+    display: inline-block;
+}
+
+table.rows-and-columns td > div {
+    max-height: 100px;
+    font-size: 0.8em;
+    overflow-y: auto;
+}
+
+table.rows-and-columns td.col-objet > div {
+    min-width: 140px;
+}
+
+table.rows-and-columns td.col-procedure > div {
+    min-width: 140px;
+}
