@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}{{ database }}: {{ table }}: {% if filtered_table_rows_count or filtered_table_rows_count == 0 %}{{ "{:,}".format(filtered_table_rows_count) }} row{% if filtered_table_rows_count == 1 %}{% else %}s{% endif %}{% endif %}
+{% block title %}{{ database }}: {{ table }}: {% if filtered_table_rows_count or filtered_table_rows_count == 0 %}{{ "{:,}".format(filtered_table_rows_count) }} ligne{% if filtered_table_rows_count == 1 %}{% else %}s{% endif %}{% endif %}
     {% if human_description_en %}where {{ human_description_en }}{% endif %}{% endblock %}
 
 {% block extra_head %}
@@ -13,6 +13,7 @@
 {% endfor %}}
 </style>
 {% endblock %}
+
 
 {% block body_class %}table db-{{ database|to_css_class }} table-{{ table|to_css_class }}{% endblock %}
 
@@ -33,7 +34,7 @@
                 style="color: #666" xmlns="http://www.w3.org/2000/svg"
                 width="28" height="28" viewBox="0 0 24 24" fill="none"
                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <title id="actions-menu-links-title">Table actions</title>
+            <title id="actions-menu-links-title">Actions</title>
             <circle cx="12" cy="12" r="3"></circle>
             <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
         </svg></summary>
@@ -52,7 +53,7 @@
 {% block description_source_license %}{% include "_description_source_license.html" %}{% endblock %}
 
 {% if filtered_table_rows_count or human_description_en %}
-    <h3>{% if filtered_table_rows_count or filtered_table_rows_count == 0 %}{{ "{:,}".format(filtered_table_rows_count) }} row{% if filtered_table_rows_count == 1 %}{% else %}s{% endif %}{% endif %}
+    <h3>{% if filtered_table_rows_count or filtered_table_rows_count == 0 %}{{ "{:,}".format(filtered_table_rows_count) }} ligne{% if filtered_table_rows_count == 1 %}{% else %}s{% endif %}{% endif %}
         {% if human_description_en %}{{ human_description_en }}{% endif %}
     </h3>
 {% endif %}
@@ -127,13 +128,16 @@
 </div>
 {% endif %}
 
+
+
+<p class="export-links">Télécharger ces données au format <a href="{{ url_csv }}&_dl=1">CSV</a>.
+
 {% if query.sql and allow_execute_sql %}
-    <p><a class="not-underlined" title="{{ query.sql }}" href="{{ urls.database(database) }}?{{ {'sql': query.sql}|urlencode|safe }}{% if query.params %}&amp;{{ query.params|urlencode|safe }}{% endif %}">&#x270e; <span class="underlined">Voir et éditer le SQL</span></a></p>
+    - <a class="not-underlined" title="{{ query.sql }}" href="{{ urls.database(database) }}?{{ {'sql': query.sql}|urlencode|safe }}{% if query.params %}&amp;{{ query.params|urlencode|safe }}{% endif %}">&#x270e; <span class="underlined">Voir et éditer le SQL</span></a>
 {% endif %}
+</p>
 
-<p class="export-links">Télécharger ces données au format {% for name, url in renderers.items() %}<a href="{{ url }}">{{ name }}</a>{{ ", " if not loop.last }}{% endfor %}{% if display_rows %}, <a href="{{ url_csv }}&_dl=1">CSV</a> (<a href="#export">advanced</a>){% endif %}</p>
-
-{% if suggested_facets %}
+<!-- {% if suggested_facets %}
     <p class="suggested-facets">
         Facettes suggérées : {% for facet in suggested_facets %}<a href="{{ facet.toggle_url }}#facet-{{ facet.name|to_css_class }}">{{ facet.name }}</a>{% if facet.type %} ({{ facet.type }}){% endif %}{% if not loop.last %}, {% endif %}{% endfor %}
     </p>
@@ -168,7 +172,7 @@
             </div>
         {% endfor %}
     </div>
-{% endif %}
+{% endif %}-->
 
 {% include custom_table_templates %}
 
@@ -176,7 +180,7 @@
      <p><a href="{{ next_url }}">Page suivante</a></p>
 {% endif %}
 
-{% if display_rows %}
+<!-- {% if display_rows %}
     <div id="export" class="advanced-export">
         <h3>Export avancé</h3>
         <p>JSON shape:
@@ -199,14 +203,14 @@
             </p>
         </form>
     </div>
-{% endif %}
+{% endif %} -->
 
-{% if table_definition %}
+<!-- {% if table_definition %}
     <pre class="wrapped-sql">{{ table_definition }}</pre>
 {% endif %}
 
 {% if view_definition %}
     <pre class="wrapped-sql">{{ view_definition }}</pre>
-{% endif %}
+{% endif %} -->
 
 {% endblock %}

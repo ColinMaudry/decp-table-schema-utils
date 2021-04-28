@@ -12,6 +12,8 @@
     "decp": {
       "tables": {
         "decp": {
+          "title": "Marchés et titulaires",
+          "description": "Marché publics et leurs titulaires. Un marché avec deux titulaires occupe donc deux lignes.",
           "size": 40,
           "sort_desc": "datePublicationDonnees"
         }
