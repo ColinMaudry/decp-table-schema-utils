@@ -10,8 +10,8 @@ table.rows-and-columns td > div {
 }
 
 table.rows-and-columns tr:nth-child(even) {
-           background-color: #DDEFFF;
-       }
+   background-color: #DDEFFF;
+}
 
 h4,.header4 {
     text-decoration: none;
