@@ -43,7 +43,7 @@ def getRootId(data):
         "titulaire.denominationSociale": .denominationSociale?,
         "objetModification": $modifications.objetModification,
         #"anomalies": ($m.anomalies | length)
-        "donneesActuelles": 0,
+        "donneesActuelles": "non",
         #"modifications": $modifications,
         "anomalies": (if ($m.anomalies) then $m.anomalies | join(";") else "" end)
     }

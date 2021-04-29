@@ -9,6 +9,10 @@ table.rows-and-columns td > div {
     overflow-x: hidden;
 }
 
+table.rows-and-columns tr:nth-child(even) {
+           background-color: #DDEEFF;
+       }
+
 h4,.header4 {
     text-decoration: none;
 }

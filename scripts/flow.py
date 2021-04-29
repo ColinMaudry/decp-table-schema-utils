@@ -22,21 +22,21 @@ def decp_processing():
 
 
 def json_to_csv() :
-     subprocess.call(['scripts/decpJson-to-csv.sh','test.json'])
+     subprocess.call(['scripts/decpJson-to-csv.sh','decp.json'])
 
 def donnees_actuelles(rows) :
     prevRootId = ""
-    donneesActuelles = False
+    donneesActuelles = ""
     prevSeq = 0
 
     for row in rows :
         if row['rootId'] != prevRootId :
-            donneesActuelles = True
+            donneesActuelles = "oui"
             prevSeq = row['seq']
             prevRootId = row['rootId']
 
         elif row['rootId'] == prevRootId and row['seq'] != prevSeq :
-            donneesActuelles = False
+            donneesActuelles = "non"
             prevSeq = row['seq']
 
         row['donneesActuelles'] = donneesActuelles
