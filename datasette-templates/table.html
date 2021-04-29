@@ -53,9 +53,9 @@
 {% block description_source_license %}{% include "_description_source_license.html" %}{% endblock %}
 
 {% if filtered_table_rows_count or human_description_en %}
-    <h3>{% if filtered_table_rows_count or filtered_table_rows_count == 0 %}{{ "{:,}".format(filtered_table_rows_count) }} ligne{% if filtered_table_rows_count == 1 %}{% else %}s{% endif %}{% endif %}
+    <h4>{% if filtered_table_rows_count or filtered_table_rows_count == 0 %}{{ "{:,}".format(filtered_table_rows_count) }} ligne{% if filtered_table_rows_count == 1 %}{% else %}s{% endif %}{% endif %}
         {% if human_description_en %}{{ human_description_en }}{% endif %}
-    </h3>
+    </h4>
 {% endif %}
 
 <form class="filters" action="{{ urls.table(database, table) }}" method="get">

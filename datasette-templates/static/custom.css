@@ -8,6 +8,10 @@ table.rows-and-columns td > div {
     overflow-y: auto;
 }
 
+h4,.header4 {
+    text-decoration: none;
+}
+
 table.rows-and-columns td.col-objet > div {
     min-width: 140px;
 }
