@@ -6,7 +6,6 @@ from datapackage_to_datasette import datapackage_to_datasette, DataImportError
 def decp_processing():
     flow = Flow(
         load("decp.csv"),
-        set_type("donneesActuelles", type="boolean"),
         set_type("acheteur.id", type="string"),
         set_type("titulaire.id", type="string"),
         set_type("codeCPV", type="string"),
@@ -31,12 +30,12 @@ def donnees_actuelles(rows) :
 
     for row in rows :
         if row['rootId'] != prevRootId :
-            donneesActuelles = "oui"
+            donneesActuelles = 'oui'
             prevSeq = row['seq']
             prevRootId = row['rootId']
 
         elif row['rootId'] == prevRootId and row['seq'] != prevSeq :
-            donneesActuelles = "non"
+            donneesActuelles = 'non'
             prevSeq = row['seq']
 
         row['donneesActuelles'] = donneesActuelles
