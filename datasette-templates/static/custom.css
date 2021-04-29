@@ -6,6 +6,7 @@ table.rows-and-columns td > div {
     max-height: 100px;
     font-size: 0.8em;
     overflow-y: auto;
+    overflow-x: hidden;
 }
 
 h4,.header4 {
