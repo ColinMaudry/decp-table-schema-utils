@@ -13,9 +13,9 @@ def decp_processing():
         # update_resource(0, '{"name": "decp"}'),
         sort_rows('{rootId}:{seq}', resources = 0, reverse = True),
         donnees_actuelles,
-        delete_fields(["rootId","seq"], resources= 0, regex=False),
+        delete_fields(["rootId","seq"], resources= 0, regex = False),
+        sort_rows('datePublicationDonnees', resources = 0, reverse = True)
         dump_to_path("decp")
-
     )
     flow.process()
 
