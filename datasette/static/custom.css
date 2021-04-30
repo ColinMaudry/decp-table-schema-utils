@@ -1,0 +1,43 @@
+section.content > div.table-wrapper {
+    display: inline-block;
+}
+
+nav ul {
+    list-style-type: none;
+}
+
+nav li {
+    padding: 10px;
+    border-top: solid 1px #fff;
+}
+
+nav summary {
+    font-weight: bold;
+}
+
+nav .nav-menu-inner {
+    padding: 10px 0;
+}
+
+table.rows-and-columns td > div {
+    max-height: 100px;
+    font-size: 0.8em;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+table.rows-and-columns tr:nth-child(even) {
+    background-color: #DDEFFF;
+}
+
+h4,.header4 {
+    text-decoration: none;
+}
+
+table.rows-and-columns td.col-objet > div {
+    min-width: 140px;
+}
+
+table.rows-and-columns td.col-procedure > div {
+    min-width: 140px;
+}
