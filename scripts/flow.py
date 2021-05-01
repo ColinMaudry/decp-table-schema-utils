@@ -14,16 +14,17 @@ def decp_processing():
         sort_rows('{rootId}:{seq}', resources = 0, reverse = True),
         donnees_actuelles,
         delete_fields(["rootId","seq"], resources= 0, regex = False),
-        sort_rows('datePublicationDonnees', resources = 0, reverse = True)
+        sort_rows('datePublicationDonnees', resources = 0, reverse = True),
         dump_to_path("decp")
     )
     flow.process()
 
 
 def json_to_csv() :
-     subprocess.call(['scripts/decpJson-to-csv.sh','decp.json'])
+     subprocess.call(['scripts/decpJson-to-csv.sh','test.json'])
 
 def donnees_actuelles(rows) :
+    print("Distinction des données actuelles et des données anciennes...")
     prevRootId = ""
     donneesActuelles = ""
     prevSeq = 0
@@ -42,6 +43,7 @@ def donnees_actuelles(rows) :
         yield row
 
 def load_to_sqlite() :
+
     try:
         datapackage_to_datasette(
             'decp/decp.db',
@@ -53,6 +55,9 @@ def load_to_sqlite() :
         raise
 
 if __name__ == '__main__':
+    print("Conversion JSON vers CSV, et détection des anomalies...")
     json_to_csv()
+    print("Chargement du CSV, tri...")
     decp_processing()
+    print("Chargement dans SQLite et création des métadonnées datasette...")
     load_to_sqlite()
