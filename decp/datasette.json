@@ -13,7 +13,7 @@
       "tables": {
         "decp": {
           "title": "Marchés et titulaires",
-          "description": "Marché publics et leurs titulaires. Un marché avec deux titulaires occupe donc deux lignes. [Documentation des colonnes](https://github.com/ColinMaudry/decp-table-schema#mod%C3%A8le-de-donn%C3%A9es)",
+          "description": "Marché publics et leurs titulaires. Un marché avec deux titulaires occupe donc deux lignes.",
           "size": 40,
           "sort_desc": "datePublicationDonnees"
         }
