@@ -51,7 +51,7 @@ end
             else
             . end
 
-        | if (._type == "Marché" and (.titulaires? | length > 0) and (.titulaires? | map((if (.id? | length < 14) and (.typeIdentifiant? = "SIRET") then "ko" else empty end)
+        | if (._type == "Marché" and (.titulaires? | length > 0) and (.titulaires? | map((if (.id? | length < 14) and (.typeIdentifiant? == "SIRET") then "ko" else empty end)
         )
          | length > 0)) then  addAnomaly(".titulaires.id est trop court")
             else
