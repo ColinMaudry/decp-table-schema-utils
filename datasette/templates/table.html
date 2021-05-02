@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block title %}{{ database }}: {{ table }}: {% if filtered_table_rows_count or filtered_table_rows_count == 0 %}{{ "{:,}".format(filtered_table_rows_count) }} ligne{% if filtered_table_rows_count == 1 %}{% else %}s{% endif %}{% endif %}
-    {% if human_description_en %}where {{ human_description_en }}{% endif %}{% endblock %}
+    {% if human_description_en %}où {{ human_description_en }}{% endif %}{% endblock %}
 
 {% block extra_head %}
 {{ super() }}
@@ -73,51 +73,9 @@
                 </select>
             </div><div class="select-wrapper filter-op">
                 <select name="_filter_op_{{ loop.index }}">
-                        <option value="exact"{% if key == lookup %} selected{% endif %}>=</option>
-
-                        <option value="not"{% if key == lookup %} selected{% endif %}>!=</option>
-
-                        <option value="contains"{% if key == lookup %} selected{% endif %}>contains</option>
-
-                        <option value="endswith"{% if key == lookup %} selected{% endif %}>ends with</option>
-
-                        <option value="startswith" {% if key == lookup %} selected{% endif %}>starts with</option>
-
-                        <option value="gt">&gt;</option>
-
-                        <option value="gte">≥</option>
-
-                        <option value="lt">&lt;</option>
-
-                        <option value="lte">≤</option>
-
-                        <option value="like">like</option>
-
-                        <option value="notlike">not like</option>
-
-                        <option value="glob">glob</option>
-
-                        <option value="in">in</option>
-
-                        <option value="notin">not in</option>
-
-                        <option value="arraycontains">array contains</option>
-
-                        <option value="arraynotcontains">array does not contain</option>
-
-                        <option value="date">date</option>
-
-                        <option value="isnull__1">is null</option>
-
-                        <option value="notnull__1">is not null</option>
-
-                        <option value="isblank__1">is blank</option>
-
-                        <option value="notblank__1">is not blank</option>
-
-                    <!-- {% for key, display, no_argument in filters.lookups() %}
+                    {% for key, display, no_argument in filters.lookups() %}
                         <option value="{{ key }}{% if no_argument %}__1{% endif %}"{% if key == lookup %} selected{% endif %}>{{ display }}</option>
-                    {% endfor %} -->
+                    {% endfor %}
                 </select>
             </div><input type="text" name="_filter_value_{{ loop.index }}" class="filter-value" value="{{ value }}">
         </div>
@@ -132,50 +90,9 @@
             </select>
         </div><div class="select-wrapper filter-op">
             <select name="_filter_op">
-                <option value="exact">=</option>
-
-                <option value="not">!=</option>
-
-                <option value="contains">contains</option>
-
-                <option value="endswith">ends with</option>
-
-                <option value="startswith">starts with</option>
-
-                <option value="gt">&gt;</option>
-
-                <option value="gte">≥</option>
-
-                <option value="lt">&lt;</option>
-
-                <option value="lte">≤</option>
-
-                <option value="like">like</option>
-
-                <option value="notlike">not like</option>
-
-                <option value="glob">glob</option>
-
-                <option value="in">in</option>
-
-                <option value="notin">not in</option>
-
-                <option value="arraycontains">array contains</option>
-
-                <option value="arraynotcontains">array does not contain</option>
-
-                <option value="date">date</option>
-
-                <option value="isnull__1">is null</option>
-
-                <option value="notnull__1">is not null</option>
-
-                <option value="isblank__1">is blank</option>
-
-                <option value="notblank__1">is not blank</option>
-                <!-- {% for key, display, no_argument in filters.lookups() %}
+                {% for key, display, no_argument in filters.lookups() %}
                     <option value="{{ key }}{% if no_argument %}__1{% endif %}"{% if key == lookup %} selected{% endif %}>{{ display }}</option>
-                {% endfor %} -->
+                {% endfor %}
             </select>
         </div><input type="text" name="_filter_value" class="filter-value">
     </div>
@@ -196,7 +113,7 @@
         {% for key, value in form_hidden_args %}
             <input type="hidden" name="{{ key }}" value="{{ value }}">
         {% endfor %}
-        <input type="submit" value="Filtrer">
+        <input type="submit" value="Apply">
     </div>
 </form>
 
