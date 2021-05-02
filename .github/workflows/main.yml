@@ -23,11 +23,9 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
-
+# apt install jq wget curl python3-pip
       - name: Dependencies
-        run: |
-          apt install jq wget curl python3-pip
-          pip3 install dataflows
+        run: pip3 install dataflows
 
 
       # Runs a single command using the runners shell
