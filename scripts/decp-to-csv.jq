@@ -57,6 +57,7 @@ def getDate(date;other):
         "titulaire.typeIdentifiant": .typeIdentifiant?,
         "titulaire.denominationSociale": .denominationSociale?,
         "objetModification": $modifications.objetModification,
+        "source": $m.source?,
         #"anomalies": ($m.anomalies | length)
         "donneesActuelles": "non",
         #"modifications": $modifications,

@@ -6,7 +6,7 @@ dir=`dirname "$0"`
 
 if [[ ! -f $json ]]
 then
-    wget https://www.data.gouv.fr/fr/datasets/r/16962018-5c31-4296-9454-5998585496d2 -O $json
+    wget -nv https://www.data.gouv.fr/fr/datasets/r/16962018-5c31-4296-9454-5998585496d2 -O $json
 fi
 
 #head -n 1 $dir/../exemples/exemple-valide.csv
