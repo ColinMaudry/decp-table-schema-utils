@@ -9,7 +9,7 @@
   "license": "Licence ouverte",
   "license_url": "https://www.etalab.gouv.fr/wp-content/uploads/2014/05/Licence_Ouverte.pdf",
   "databases": {
-    "decp": {
+    "db": {
       "tables": {
         "decp": {
           "title": "Marchés et titulaires",
