@@ -32,8 +32,10 @@ fi
 
 echo "Mise à jour de decp.csv..."
 
-curl "$api/datasets/$dataset_id/resources/${resource_id_csv}/upload/" -F "file=@decp/decp.csv" -H "X-API-KEY: $api_key"
+curl "$api/datasets/$dataset_id/resources/${resource_id_csv}/upload/" -F "file=@decp/decp.csv" -H "X-API-KEY: $api_key" | jq .
 
+
+echo ""
 echo "Mise à jour de datapackage.json..."
 
-curl "$api/datasets/$dataset_id/resources/${resource_id_datapackage}/upload/" -F "file=@decp/datapackage.json" -H "X-API-KEY: $api_key"
+curl "$api/datasets/$dataset_id/resources/${resource_id_datapackage}/upload/" -F "file=@decp/datapackage.json" -H "X-API-KEY: $api_key" | jq .
