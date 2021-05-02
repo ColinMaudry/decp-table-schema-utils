@@ -14,7 +14,7 @@ def decp_processing():
         sort_rows('{rootId}:{seq}', resources = 0, reverse = True),
         donnees_actuelles,
         delete_fields(["rootId","seq"], resources= 0, regex = False),
-        sort_rows('datePublicationDonnees', resources = 0, reverse = True),
+        sort_rows('{datePublicationDonnees}', resources = 0, reverse = True),
         dump_to_path("decp")
     )
     flow.process()
@@ -42,17 +42,17 @@ def donnees_actuelles(rows) :
         row['donneesActuelles'] = donneesActuelles
         yield row
 
-def load_to_sqlite() :
-
-    try:
-        datapackage_to_datasette(
-            'decp/decp.db',
-            'decp/datapackage.json',
-            '/dev/null',
-            write_mode='replace'
-        )
-    except DataImportError:
-        raise
+# def load_to_sqlite() :
+#
+#     try:
+#         datapackage_to_datasette(
+#             'decp/db.sqlite',
+#             'decp/datapackage.json',
+#             '/dev/null',
+#             write_mode='replace'
+#         )
+#     except DataImportError:
+#         raise
 
 if __name__ == '__main__':
     print("Conversion JSON vers CSV, et détection des anomalies...")
@@ -60,4 +60,4 @@ if __name__ == '__main__':
     print("Chargement du CSV, tri...")
     decp_processing()
     print("Chargement dans SQLite et création des métadonnées datasette...")
-    load_to_sqlite()
+    #load_to_sqlite()
