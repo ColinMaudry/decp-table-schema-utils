@@ -1,0 +1,22 @@
+{
+  "extra_css_urls": [
+    "/static/custom.css"
+  ],
+  "title": "Exploration et téléchargement des données essentielles de la commande publique (format tabulaire)",
+  "description": "Ce site vous permet de filtrer et trier les données sur les marchés publics, et de télécharger le résultat sous la forme d'un fichier que vous pourrez ouvrir dans un logiciel de tableur (MS Excel, LibreOffice, OpenOffice).",
+  "source": "Donn\u00e9es essentielles de la commande publique",
+  "source_url": "https://www.data.gouv.fr/fr/datasets/5cd57bf68b4c4179299eb0e9/",
+  "license": "Licence ouverte",
+  "license_url": "https://www.etalab.gouv.fr/wp-content/uploads/2014/05/Licence_Ouverte.pdf",
+  "databases": {
+    "decp": {
+      "tables": {
+        "decp": {
+          "title": "Marchés et titulaires",
+          "description": "Marché publics et leurs titulaires. Un marché avec deux titulaires occupe donc deux lignes.",
+          "size": 40
+        }
+      }
+    }
+  }
+}
