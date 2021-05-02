@@ -4,8 +4,23 @@ def getRootId(data):
     data.id[:((data.id |length) - 2)]
     else
     data.id
-    end
+    end;
+def toDateEpoch(date):
+    date | . + "T00:00:00Z" | fromdateiso8601
     ;
+def getDate(date;other):
+    (date | gsub("[\\+\\-]\\d\\d\\:\\d\\d$";"")) as $fixedDate |
+    (other | gsub("[\\+\\-]\\d\\d\\:\\d\\d$";"")) as $fixedOther |
+    toDateEpoch($fixedDate) as $dateEpoch |
+    toDateEpoch($fixedOther) as $otherEpoch |
+    if ($dateEpoch < ($now | fromdateiso8601)) then
+        $fixedDate
+    elif  ($otherEpoch < ($now | fromdateiso8601)) then
+        $fixedOther
+    else
+        empty
+    end;
+
 [.marches[] | select(._type == "Marché" and (.titulaires? | length) > 0)] | map(
 . as $m |
 
@@ -34,8 +49,8 @@ def getRootId(data):
         "lieuExecution.typeCode": $m.lieuExecution.typeCode?,
         "lieuExecution.nom": $m.lieuExecution.nom?,
         "dureeMois": ($modifications.dureeMois // $m.dureeMois?) | round,
-        "dateNotification": $m.dateNotification? | gsub("[\\+\\-]\\d\\d\\:\\d\\d$";""),
-        "datePublicationDonnees": ($modifications.datePublicationDonneesModification // $m.datePublicationDonnees) | gsub("[\\+\\-]\\d\\d\\:\\d\\d$";""),
+        "dateNotification": getDate($m.dateNotification?;($modifications.datePublicationDonneesModification // $m.datePublicationDonnees)),
+        "datePublicationDonnees": getDate(($modifications.datePublicationDonneesModification // $m.datePublicationDonnees);$m.dateNotification?),
         "montant": $m.montant?,
         "formePrix": $m.formePrix?,
         "titulaire.id": (.id? | tostring),
