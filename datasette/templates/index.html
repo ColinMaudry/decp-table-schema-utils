@@ -9,6 +9,8 @@
 
 {% block description_source_license %}{% include "_description_source_license.html" %}{% endblock %}
 
+<p><a href="/db/decp">Explorer les données</a></p>
+
 {% for database in databases %}
     <h2 style="padding-left: 10px; border-left: 10px solid #{{ database.color }}"><a href="{{ urls.database(database.name) }}">{{ database.name }}</a>{% if database.private %} 🔒{% endif %}</h2>
     <p>
