@@ -10,4 +10,4 @@ echo "Get data and make SQLite db..."
 python3 scripts/datapackage-to-datasette.py
 
 echo "Starting datasette..."
-datasette decp/db.sqlite --template-dir datasette/templates --static static:datasette/static/ --metadata datasette/datasette.json  --plugins-dir datasette/plugins --port 9090 | grep -v "/static/"
+datasette --immutable decp/db.sqlite --template-dir datasette/templates --static static:datasette/static/ --metadata datasette/datasette.json  --plugins-dir datasette/plugins --port 9090 --cors | grep -v "/static/"
