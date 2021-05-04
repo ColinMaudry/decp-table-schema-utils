@@ -6,7 +6,7 @@ import requests
 def load_to_sqlite() :
     try:
         datapackage_to_datasette(
-            'decp/db.sqlite',
+            'datasette/db.db',
             'decp/datapackage.json',
             '/dev/null',
             write_mode='replace'

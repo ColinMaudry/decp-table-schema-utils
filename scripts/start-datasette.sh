@@ -9,5 +9,7 @@ fi
 echo "Get data and make SQLite db..."
 python3 scripts/datapackage-to-datasette.py
 
+datasette inspect datasette/*.db --inspect-file=datasette/inspect-data.json
+
 echo "Starting datasette..."
-datasette --immutable decp/db.sqlite --template-dir datasette/templates --static static:datasette/static/ --metadata datasette/datasette.json  --plugins-dir datasette/plugins --port 9090 --cors | grep -v "/static/"
+datasette datasette/ --port 9090 --cors | grep -v "/static/"
