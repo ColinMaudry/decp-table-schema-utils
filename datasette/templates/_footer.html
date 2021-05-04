@@ -1,5 +1,5 @@
 Powered by <a href="https://datasette.io/" title="Datasette v{{ datasette_version }}">Datasette</a>
-{% if query_ms %}&middot; Query took {{ query_ms|round(3) }}ms{% endif %}
+<!-- {% if query_ms %}&middot; Durée de la requ {{ query_ms|round(3) }}ms{% endif %} -->
 {% if metadata %}
     {% if metadata.license or metadata.license_url %}&middot; Licence des données :
         {% if metadata.license_url %}
@@ -19,4 +19,5 @@ Powered by <a href="https://datasette.io/" title="Datasette v{{ datasette_versio
             <a href="{{ metadata.about_url }}">
         {% endif %}{{ metadata.about or metadata.about_url }}{% if metadata.about_url %}</a>{% endif %}
     {% endif %}
+    &middot; <a href="https://github.com/ColinMaudry/decp-table-schema-utils/wiki/Mentions-l%C3%A9gales">Mentions légales</a>
 {% endif %}
