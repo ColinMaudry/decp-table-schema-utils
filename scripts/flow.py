@@ -42,17 +42,17 @@ def donnees_actuelles(rows) :
         row['donneesActuelles'] = donneesActuelles
         yield row
 
-# def load_to_sqlite() :
-#
-#     try:
-#         datapackage_to_datasette(
-#             'decp/db.sqlite',
-#             'decp/datapackage.json',
-#             '/dev/null',
-#             write_mode='replace'
-#         )
-#     except DataImportError:
-#         raise
+def load_to_sqlite() :
+
+    try:
+        datapackage_to_datasette(
+            'datasette/decp.sqlite',
+            'decp/datapackage.json',
+            '/dev/null',
+            write_mode='replace'
+        )
+    except DataImportError:
+        raise
 
 if __name__ == '__main__':
     print("Conversion JSON vers CSV, et détection des anomalies...")

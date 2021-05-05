@@ -6,7 +6,7 @@ then
     mkdir decp
 fi
 
-echo "Get data and make SQLite db..."
+echo "Get data..."
 python3 scripts/datapackage-to-datasette.py
 
 datasette inspect datasette/*.db --inspect-file=datasette/inspect-data.json
