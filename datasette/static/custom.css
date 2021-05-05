@@ -2,6 +2,15 @@ section.content > div.table-wrapper {
     display: inline-block;
 }
 
+a, a:visited, a:focus, a:active {
+    color: #276890;
+    text-decoration: underline;
+}
+
+a:hover {
+    color: #0c286d;
+}
+
 nav ul {
     list-style-type: none;
 }
