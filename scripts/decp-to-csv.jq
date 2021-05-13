@@ -8,9 +8,16 @@ def getRootId(data):
 def toDateEpoch(date):
     date | . + "T00:00:00Z" | fromdateiso8601
     ;
+
+def fixDate(date):
+    date |
+    gsub("[\\+\\-]\\d\\d\\:\\d\\d$";"") |
+    gsub("^0202\\-|0200\\-|0020\\-";"2020-") |
+    gsub("^0219\\-|0209\\-|0019\\-";"2019-")
+    ;
 def getDate(date;other):
-    (date | gsub("[\\+\\-]\\d\\d\\:\\d\\d$";"")) as $fixedDate |
-    (other | gsub("[\\+\\-]\\d\\d\\:\\d\\d$";"")) as $fixedOther |
+    fixDate(date) as $fixedDate |
+    fixDate(other) as $fixedOther |
     toDateEpoch($fixedDate) as $dateEpoch |
     toDateEpoch($fixedOther) as $otherEpoch |
     if ($dateEpoch < ($now | fromdateiso8601)) then
