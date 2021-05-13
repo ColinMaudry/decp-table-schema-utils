@@ -11,6 +11,10 @@ a:hover {
     color: #0c286d;
 }
 
+a.explore {
+    font-size: 1.6em;
+}
+
 nav ul {
     list-style-type: none;
 }
