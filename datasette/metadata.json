@@ -13,7 +13,12 @@
       "tables": {
         "decp": {
           "title": "Marchés et titulaires",
-          "description": "Marché publics et leurs titulaires. Un marché avec deux titulaires occupe donc deux lignes.",
+          "description": "Marché publics et leurs titulaires. Une ligne = un titulaire de marché.",
+          "size": 40
+        },
+        "sans-titulaires": {
+          "title": "Un marché par ligne (pas de colonnes titulaire)",
+          "description": "Marchés publics sans leurs titulaires. Une ligne = un marché.",
           "size": 40
         }
       }

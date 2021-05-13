@@ -1,5 +1,5 @@
 from dataflows import Flow, load, dump_to_path, dump_to_zip, printer, add_metadata, update_resource
-from dataflows import sort_rows, filter_rows, find_replace, delete_fields, set_type, validate, unpivot
+from dataflows import sort_rows, delete_fields, set_type, duplicate, deduplicate, unpivot, set_primary_key
 import subprocess
 from datapackage_to_datasette import datapackage_to_datasette, DataImportError
 
@@ -15,7 +15,13 @@ def decp_processing():
         donnees_actuelles,
         delete_fields(["rootId","seq"], resources= 0, regex = False),
         sort_rows('{datePublicationDonnees}', resources = 0, reverse = True),
+        duplicate(source="decp", target_name="sans-titulaires", target_path="sans-titulaires.csv", duplicate_to_end=True),
+        delete_fields(["titulaire.id","titulaire.denominationSociale"], resources = "sans-titulaires", regex = False),
+        set_primary_key(["uid"], resources = 1),
+        deduplicate(),
         dump_to_path("decp")
+
+
     )
     flow.process()
 
