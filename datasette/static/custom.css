@@ -54,3 +54,7 @@ table.rows-and-columns td.col-objet > div {
 table.rows-and-columns td.col-procedure > div {
     min-width: 140px;
 }
+
+#sib-container form label {
+    width: 100%;
+}
