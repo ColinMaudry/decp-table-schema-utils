@@ -21,27 +21,33 @@ def decp_processing():
         sort_rows('{datePublicationDonnees}', resources = 0, reverse = True),
 
     # Nouvelle table dédiée aux marchés, sans données sur les titulaires
+        print("Création de la table dédiée aux marchés..."),
         duplicate(source="decp", target_name="sans-titulaires", target_path="sans-titulaires.csv", duplicate_to_end=True),
         delete_fields(["titulaire.id","titulaire.denominationSociale"], resources = "sans-titulaires", regex = False),
         set_primary_key(["uid"], resources = "sans-titulaires"),
         deduplicate(),
 
     # Chargement des précédentes DECP au format CSV, pour extraction des nouvelles données
-        print("Téléchargement des données tabulaires précédentes..."),
-        load("https://decp.info/db/decp.csv?_size=max&_dl=1", name="previous-decp"),
+        # print("Téléchargement des données tabulaires précédentes..."),
+        # load("https://decp.info/db/decp.csv?_size=max&_dl=1", name="previous-decp"),
+        # set_type("acheteur.id", type="string"),
+        # set_type("titulaire.id", type="string"),
+        # set_type("codeCPV", type="string"),
+        # set_type("lieuExecution.code", type="string"),
+        # delete_fields(["rowid"], resources="previous-decp", regex=False),
+        # #print("Fusion des données tabulaires précédentes et des données d'aujourd'hui..."),
+        # concatenate({},target={"name": "decp-titulaires","path": "decp-titulaires.csv"},resources=["decp","previous-decp"]),
+
+    # Chargement des précédentes données dédiées aux titulaires
         print("Téléchargement des données titulaires précédentes..."),
         load("decp-titulaires.csv", name="decp-titulaires"),
         set_type("acheteur.id", type="string"),
         set_type("titulaire.id", type="string"),
         set_type("codeCPV", type="string"),
         set_type("lieuExecution.code", type="string"),
-        delete_fields(["rowid"], resources="previous-decp", regex=False),
-        #print("Fusion des données tabulaires précédentes et des données d'aujourd'hui..."),
-        concatenate({},target={"name": "decp-titulaires","path": "decp-titulaires.csv"},resources=["decp","previous-decp"]),
-        #print("Enregistrement des données sur le disque..."),
+
+        print("Enregistrement des données sur le disque...")
         dump_to_path("decp")
-
-
     )
     flow.process()
 
@@ -69,7 +75,6 @@ def donnees_actuelles(rows) :
         yield row
 
 def load_to_sqlite() :
-
     try:
         datapackage_to_datasette(
             'datasette/decp.sqlite',
@@ -82,7 +87,7 @@ def load_to_sqlite() :
 
 if __name__ == '__main__':
     print("Conversion JSON vers CSV, et détection des anomalies...")
-    #json_to_csv()
+    json_to_csv()
     print("Chargement du CSV, tri...")
     decp_processing()
     print("Chargement dans SQLite et création des métadonnées datasette...")
