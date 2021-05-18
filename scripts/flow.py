@@ -29,6 +29,8 @@ def decp_processing():
     # Chargement des précédentes DECP au format CSV, pour extraction des nouvelles données
         print("Téléchargement des données tabulaires précédentes..."),
         load("https://decp.info/db/decp.csv?_size=max&_dl=1", name="previous-decp"),
+        print("Téléchargement des données titulaires précédentes..."),
+        load("decp-titulaires.csv", name="decp-titulaires"),
         set_type("acheteur.id", type="string"),
         set_type("titulaire.id", type="string"),
         set_type("codeCPV", type="string"),
