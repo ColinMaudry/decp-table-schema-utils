@@ -41,12 +41,12 @@ def decp_processing():
     # Chargement des précédentes données dédiées aux titulaires
         print("Téléchargement des données titulaires précédentes..."),
         load("decp-titulaires.csv", name="decp-titulaires"),
+        delete_fields(["siret"], resources="decp-titulaires", regex=False),
         set_type("acheteur.id", type="string"),
         set_type("titulaire.id", type="string"),
         set_type("codeCPV", type="string"),
         set_type("lieuExecution.code", type="string"),
-
-        print("Enregistrement des données sur le disque...")
+        print("Enregistrement des données sur le disque..."),
         dump_to_path("decp")
     )
     flow.process()
