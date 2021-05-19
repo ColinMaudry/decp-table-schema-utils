@@ -46,6 +46,8 @@ def decp_processing():
         set_type("titulaire.id", type="string"),
         set_type("codeCPV", type="string"),
         set_type("lieuExecution.code", type="string"),
+        set_type("departement", type="string"),
+        set_type("codeAPE", type="string"),
         print("Enregistrement des données sur le disque..."),
         dump_to_path("decp")
     )
