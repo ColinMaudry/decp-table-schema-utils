@@ -65,7 +65,7 @@ xsv cat columns siren-selection-cj.csv etatEssEntreprise.csv > siren-selection-e
 
 echo "Fusion des données siret et etat..."
 
-xsv cat columns siret-selection.csv etatEtablissement.csv > siret-selection-etat.csv &
+xsv cat columns siret-selection.csv etatEtablissement.csv | xsv select siret,siren,longitude,latitude,codeAPE,departement,etatEtablissement > siret-selection-etat.csv &
 
 wait
 
@@ -73,7 +73,7 @@ wait
 
 echo "Fusion des données siret et siren..."
 
-xsv join --left siren siret-selection-etat.csv siren siren-selection-etat-cj.csv | xsv select siret,codeAPE,departement,categorie,categorieJuridique,categorieJuridiqueLibelle1,categorieJuridiqueLibelle2,etatEtablissement,etatEntreprise,longitude,latitude > siren-siret.csv &
+xsv cat columns siret-selection-etat.csv siren-selection-etat-cj.csv | xsv select siret,codeAPE,departement,categorie,categorieJuridique,categorieJuridiqueLibelle1,categorieJuridiqueLibelle2,etatEtablissement,etatEntreprise,longitude,latitude > siren-siret.csv &
 
 echo "Sélection des colonnes DECP..."
 
@@ -83,4 +83,4 @@ wait
 
 echo "Fusion des DECP et des données SIRENE..."
 
-xsv join --left "titulaire.id" decp-selection.csv "siret" siren-siret.csv | xsv select id,uid,acheteur.id,acheteur.nom,nature,objet,codeCPV,lieuExecution.code,lieuExecution.typeCode,lieuExecution.nom,dureeMois,dateNotification,montant,titulaire.id,titulaire.typeIdentifiant,titulaire.denominationSociale,codeAPE,departement,categorie,categorieJuridique,categorieJuridiqueLibelle1,categorieJuridiqueLibelle2,etatEtablissement,etatEntreprise,longitude,latitude,donneesActuelles,anomalies > decp-titulaires.csv
+xsv join --left titulaire.id decp-selection.csv siret siren-siret.csv | xsv select id,uid,acheteur.id,acheteur.nom,nature,objet,codeCPV,lieuExecution.code,lieuExecution.typeCode,lieuExecution.nom,dureeMois,dateNotification,montant,titulaire.id,titulaire.typeIdentifiant,titulaire.denominationSociale,codeAPE,departement,categorie,categorieJuridique,categorieJuridiqueLibelle1,categorieJuridiqueLibelle2,etatEtablissement,etatEntreprise,longitude,latitude,donneesActuelles,anomalies > decp-titulaires.csv
