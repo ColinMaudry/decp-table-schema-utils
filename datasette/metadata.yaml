@@ -16,10 +16,12 @@ databases:
       decp:
         title: Marchés et titulaires
         description_html: |-
-          Marché publics et leurs titulaires. Une ligne = un titulaire
-          de marché.
+          Marché publics et leurs titulaires. Une ligne = un titulaire de marché, donc ces données ne sont pas adaptées pour travailler avec les montants de marché et le nombre de marchés.
         size: 40
       sans-titulaires:
-        title: Un marché par ligne (pas de colonnes titulaire)
-        description: Marchés publics sans leurs titulaires. Une ligne = un marché.
+        title: Marchés publics sans leurs titulaires
+        description_html: Marchés publics sans les titulaires (pas de colonnes titulaire). Données adéquates pour travailler avec les montants de marchés et les nombres de marchés. Une ligne = un marché.
         size: 40
+      decp-titulaires:
+        title: Données sur les titulaires.
+        description_html: Données détaillées sur les titulaires, dont leur géolocalisation. Les colonnes <tt>formePrix</tt>, <tt>procedure</tt>, <tt>objetModification</tt> et <tt>datePublicationDonnees</tt> sont absentes. Une ligne = un titulaire de marché.
