@@ -67,6 +67,20 @@ td.col-longitude,th.col-longitude,td.col-latitude,th.col-latitude {
     width: 100%;
 }
 
+.db-table .columns {
+    font-size: 0.9em;
+    color: #555;
+}
+
+.db-presentation {
+    border-left: 10px solid #276890;
+    padding-left: 10px;
+    max-width: 1000px;
+    margin-top: 30px;
+    font-size: 1.2em;
+}
+
+
 
 /*
 Flaticon icon font: Flaticon
