@@ -39,7 +39,7 @@ def decp_processing():
         # concatenate({},target={"name": "decp-titulaires","path": "decp-titulaires.csv"},resources=["decp","previous-decp"]),
 
     # Chargement des précédentes données dédiées aux titulaires
-        print("Téléchargement des données titulaires précédentes..."),
+        print("Chargement des données titulaires..."),
         load("decp-titulaires.csv", name="decp-titulaires"),
         delete_fields(["siret"], resources="decp-titulaires", regex=False),
         set_type("acheteur.id", type="string"),
