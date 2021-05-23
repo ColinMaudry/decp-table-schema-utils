@@ -130,7 +130,7 @@
 
 
 
-<p class="export-links">Télécharger ces données au format  <a href="{{ url_csv | replace('.csv','.xlsx')}}&_dl=1">Excel</a> <a href="{{ url_csv }}&_dl=1">CSV</a>{% if filtered_table_rows_count > 50000 %} (50 000 premières lignes){% endif %}.
+<p class="export-links">Télécharger ces données au format  <a href="{{ url_csv | replace('.csv','.xlsx')}}&_dl=1">Excel</a> ou <a href="{{ url_csv }}&_dl=1">CSV</a>{% if filtered_table_rows_count > 50000 %} (50 000 premières lignes){% endif %}.
 
 {% if query.sql and allow_execute_sql %}
     - <a class="not-underlined" title="{{ query.sql }}" href="{{ urls.database(database) }}?{{ {'sql': query.sql}|urlencode|safe }}{% if query.params %}&amp;{{ query.params|urlencode|safe }}{% endif %}">&#x270e; <span class="underlined">Voir et éditer le SQL</span></a>
