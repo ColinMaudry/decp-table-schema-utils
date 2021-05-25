@@ -1,8 +1,8 @@
-Notes de version
+# Notes de version
+
 ## 1.1.0 (2021-05-23)
 
-
-### Features
+### Nouvelles fonctionnalités
 
 * activation du debug, désactivation des facettes personnalisées ([2deb49a](https://github.com/ColinMaudry/decp-table-schema-utils/commit/2deb49aa00c64347f34a65ccb15282f8f5e42cd8))
 * ajout d'icônes à côté des liens + adresse email de contact [#35](https://github.com/ColinMaudry/decp-table-schema-utils/issues/35) ([07b91a9](https://github.com/ColinMaudry/decp-table-schema-utils/commit/07b91a9ed945268369e4421a2212abeab4a109f7))
@@ -23,8 +23,7 @@ Notes de version
 * suppression des métadonnées json de datasette ([aeaf8ae](https://github.com/ColinMaudry/decp-table-schema-utils/commit/aeaf8ae62f62ba01f9d4e31dee76ceb7683dcfb2))
 * téléchargement des données titulaires ([f3cc0b1](https://github.com/ColinMaudry/decp-table-schema-utils/commit/f3cc0b1ee10af7e0f489e5712ad7e0dfe156334b))
 
-
-### Bug Fixes
+### Correctifs
 
 * lien vers les mentions légales ([316f723](https://github.com/ColinMaudry/decp-table-schema-utils/commit/316f72315bee86056e496f3e48a09d23c5a06a32))
 * liens de la page d'accueil, logs ([172bd34](https://github.com/ColinMaudry/decp-table-schema-utils/commit/172bd34776cef29e12f5e0e8fa9981b7516f25fc))

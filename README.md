@@ -1,6 +1,6 @@
 # DECP Table Schema utils
 
-> Version 1.0.0
+> Version 1.1.0
 
 Ce dépôt rassemble les outils liés au schéma tabulaire des DECP.
 
@@ -33,3 +33,27 @@ python3 ./scripts/flow.py
 ## Personnalisation et configuration de datasette
 
 Les fichiers de personnalisation et configuration de datasette se trouvent dans le dossier `./datasette`.
+
+## Notes de version
+
+### 1.1.0 (25/05/2021)
+
+- ajout de nouvelles vues :
+  - vue dédiée aux titulaires de marchés (`decp-titulaires`) avec données provenant du répertoire SIRENE
+  - vue sans les titulaires (`decp-sans-titulaires`) pour analyser les nombres de marchés et les montants
+- amélioration de la page d'accueil
+- développement de la page "db" avec description des vues et liste des colonnes
+- les codes APE sont cliquables
+- ajout des mentions légales
+- ajout d'un formulatire d'inscription à une lettre d'information
+- correction de bugs :
+  - correction du format de certaines dates dans les données
+  -
+
+
+### 1.0.0
+
+- publication sur https://decp.info
+- ajout d'une vue équivalente au format DECP réglementaire
+- personnalisation de datasette
+- script de conversion quotidien basé sur [dataflows](https://github.com/datahq/dataflows)
