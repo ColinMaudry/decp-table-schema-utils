@@ -41,7 +41,6 @@ def decp_processing():
     # Chargement des précédentes données dédiées aux titulaires
         print("Chargement des données titulaires..."),
         load("decp-titulaires.csv", name="decp-titulaires"),
-        delete_fields(["siret"], resources="decp-titulaires", regex=False),
         set_type("acheteur.id", type="string"),
         set_type("titulaire.id", type="string"),
         set_type("codeCPV", type="string"),
@@ -77,9 +76,10 @@ def donnees_actuelles(rows) :
         yield row
 
 def load_to_sqlite() :
+    
     try:
         datapackage_to_datasette(
-            'datasette/decp.sqlite',
+            'decp/decp.sqlite',
             'decp/datapackage.json',
             '/dev/null',
             write_mode='replace'

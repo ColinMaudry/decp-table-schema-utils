@@ -21,23 +21,13 @@ export resource_id_datapackage="65194f6f-e273-4067-8075-56f072d56baf"
 export resource_id_sqlite="c6b08d03-7aa4-4132-b5b2-fd76633feecc"
 
 
-
-
-    #API_KEY configurée dans les options de build de CircleCI
-    api_key=$API_KEY
+#API_KEY configurée dans les options de build de CircleCI
+api_key=$API_KEY
 
 
 if [[ ! -f ./decp/decp.csv ]]
 then
     echo "Le fichier decp/decp.csv doit d'abord être généré."
-    exit 1
-fi
-
-if [[ -f ./datasette/decp.sqlite ]]
-then
-    gzip datasette/decp.sqlite
-else
-    echo "Le fichier datasette/decp.sqlite doit d'abord être généré."
     exit 1
 fi
 
@@ -56,6 +46,6 @@ echo "Mise à jour de datapackage.json..."
 curl "$api/datasets/$dataset_id/resources/${resource_id_datapackage}/upload/" -F "file=@decp/datapackage.json" -H "X-API-KEY: $api_key" | jq .
 
 echo ""
-echo "Mise à jour de decp.sqlite.gz..."
+echo "Mise à jour de decp.sqlite..."
 
-curl "$api/datasets/$dataset_id/resources/${resource_id_sqlite}/upload/" -F "file=@datasette/decp.sqlite.gz" -H "X-API-KEY: $api_key" | jq .
+curl "$api/datasets/$dataset_id/resources/${resource_id_sqlite}/upload/" -F "file=@decp/decp.sqlite" -H "X-API-KEY: $api_key" | jq .
