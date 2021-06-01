@@ -11,6 +11,8 @@
 #
 # wait
 
+set -e
+
 echo "Extraction des SIRET des DECP..."
 
 echo "titulaire.id,titulaire.typeIdentifiant" > decpSirets.csv
