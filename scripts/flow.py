@@ -54,7 +54,7 @@ def decp_processing():
 
 
 def json_to_csv() :
-     subprocess.call(['scripts/decpJson-to-csv.sh','test.json'])
+     subprocess.call(['scripts/decpJson-to-csv.sh'])
 
 def donnees_actuelles(rows) :
     print("Distinction des données actuelles et des données anciennes...")
