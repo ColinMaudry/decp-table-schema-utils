@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -e
+
 json="decp.json"
 
 dir=`dirname "$0"`
