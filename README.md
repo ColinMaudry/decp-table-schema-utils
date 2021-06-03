@@ -48,8 +48,6 @@ Les fichiers de personnalisation et configuration de datasette se trouvent dans 
 - ajout d'un formulatire d'inscription à une lettre d'information
 - correction de bugs :
   - correction du format de certaines dates dans les données
-  -
-
 
 ### 1.0.0
 
