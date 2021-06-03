@@ -11,10 +11,12 @@
 #
 # wait
 
+set -e
+
 echo "Extraction des SIRET des DECP..."
 
-echo "titulaire.id,titulaire.typeIdentifiant" > decpSirets.csv
-xsv select titulaire.id,titulaire.typeIdentifiant decp/decp.csv | tail -n +2 | grep "SIRET" | sort -u >> decpSirets.csv
+xsv select titulaire.id,titulaire.typeIdentifiant decp/decp.csv |\
+xsv search -s titulaire.typeIdentifiant "SIRET" | sort -u >> decpSirets.csv
 
 echo "Récupération des données SIRET..."
 
@@ -77,7 +79,9 @@ xsv cat columns siret-selection-etat.csv siren-selection-etat-cj.csv | xsv selec
 
 echo "Sélection des colonnes DECP..."
 
-xsv select id,uid,acheteur.id,acheteur.nom,nature,objet,codeCPV,lieuExecution.code,lieuExecution.typeCode,lieuExecution.nom,dureeMois,dateNotification,montant,titulaire.id,titulaire.typeIdentifiant,titulaire.denominationSociale,donneesActuelles,anomalies decp/decp.csv | xsv search -s donneesActuelles "oui" > decp-selection.csv &
+xsv select id,uid,acheteur.id,acheteur.nom,nature,objet,codeCPV,lieuExecution.code,lieuExecution.typeCode,lieuExecution.nom,dureeMois,dateNotification,montant,titulaire.id,titulaire.typeIdentifiant,titulaire.denominationSociale,donneesActuelles,anomalies decp/decp.csv |\
+xsv search -s donneesActuelles "oui" |\
+xsv search -s titulaire.typeIdentifiant "SIRET" > decp-selection.csv &
 
 wait
 

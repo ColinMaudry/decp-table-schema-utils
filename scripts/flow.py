@@ -23,7 +23,7 @@ def decp_processing():
     # Nouvelle table dédiée aux marchés, sans données sur les titulaires
         print("Création de la table dédiée aux marchés..."),
         duplicate(source="decp", target_name="decp-sans-titulaires", target_path="decp-sans-titulaires.csv", duplicate_to_end=True),
-        delete_fields(["titulaire.id","titulaire.denominationSociale"], resources = "decp-sans-titulaires", regex = False),
+        delete_fields(["titulaire.id","titulaire.denominationSociale","titulaire.typeIdentifiant"], resources = "decp-sans-titulaires", regex = False),
         set_primary_key(["uid"], resources = "decp-sans-titulaires"),
         deduplicate(),
 
@@ -54,7 +54,7 @@ def decp_processing():
 
 
 def json_to_csv() :
-     subprocess.call(['scripts/decpJson-to-csv.sh','test.json'])
+     subprocess.call(['scripts/decpJson-to-csv.sh'])
 
 def donnees_actuelles(rows) :
     print("Distinction des données actuelles et des données anciennes...")
