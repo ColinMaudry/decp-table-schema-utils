@@ -1,4 +1,4 @@
-Notes de version
+# Notes de version
 ## [1.3.0](https://github.com/ColinMaudry/decp-table-schema-utils/compare/v1.2.0...v1.3.0) (2021-06-03)
 
 
