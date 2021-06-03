@@ -1,6 +1,6 @@
 # DECP Table Schema utils
 
-> Version 1.2.0
+> Version 1.3.0
 
 Ce dépôt rassemble les outils liés au schéma tabulaire des DECP.
 
@@ -33,6 +33,13 @@ python3 ./scripts/flow.py
 
 
 ## Notes de version
+
+### 1.3.0 (03/06/2021)
+
+- ne garder que les inscrits au SIRENE dans decp-titulaires ([f8c8bf4](https://github.com/ColinMaudry/decp-table-schema-utils/commit/f8c8bf4de76f5a11e89276f1e66db38912f8dcfe))
+- correction de bugs:
+  - suppression de la colonne `titulaire.typeIdentifiant` dans decp-sans-titulaires
+
 
 ### 1.2.0 (28/05/2021)
 
