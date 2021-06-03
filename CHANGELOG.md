@@ -1,4 +1,13 @@
-# Notes de version
+Notes de version
+## [1.3.0](https://github.com/ColinMaudry/decp-table-schema-utils/compare/v1.2.0...v1.3.0) (2021-06-03)
+
+
+### Features
+
+* ne garder que les inscrits au SIRENE dans decp-titulaires ([f8c8bf4](https://github.com/ColinMaudry/decp-table-schema-utils/commit/f8c8bf4de76f5a11e89276f1e66db38912f8dcfe))
+* remplacement de wget par curl ([541a4a1](https://github.com/ColinMaudry/decp-table-schema-utils/commit/541a4a16fb3a9ea2e5db203ce15fbbed8ec9981e))
+* stop en cas d'erreur ([7181f2d](https://github.com/ColinMaudry/decp-table-schema-utils/commit/7181f2d54a7dab47df758d7f4dc741b323171d1b))
+* stopper la génération de decp-titulaires en cas d'erreur ([7292fb1](https://github.com/ColinMaudry/decp-table-schema-utils/commit/7292fb1ad478f60e1c17148c8db1d44308493021))
 
 ## 1.1.0 (2021-05-23)
 
