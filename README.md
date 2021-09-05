@@ -34,6 +34,10 @@ python3 ./scripts/flow.py
 
 ## Notes de version
 
+### 1.3.1 (05/09/2021)
+
+- correction des dates qui commencent par "220-" au lieu de "2020-" (uid : `200060010000852020-02B457-L200`)
+
 ### 1.3.0 (03/06/2021)
 
 - ne garder que les inscrits au SIRENE dans decp-titulaires ([f8c8bf4](https://github.com/ColinMaudry/decp-table-schema-utils/commit/f8c8bf4de76f5a11e89276f1e66db38912f8dcfe))
