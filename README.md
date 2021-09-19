@@ -1,6 +1,6 @@
 # DECP Table Schema utils
 
-> Version 1.3.0
+> Version 1.3.2
 
 Ce dépôt rassemble les outils liés au schéma tabulaire des DECP.
 
@@ -33,6 +33,10 @@ python3 ./scripts/flow.py
 
 
 ## Notes de version
+
+### 1.3.2 (19/09/2021)
+
+- filtrage des dates de notification trop mal formées
 
 ### 1.3.1 (05/09/2021)
 
