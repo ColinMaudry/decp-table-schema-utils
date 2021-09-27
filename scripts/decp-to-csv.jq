@@ -28,7 +28,10 @@ def getDate(date;other):
         empty
     end;
 
-[.marches[] | select(._type == "Marché" and (.titulaires? | length) > 0)] and (.dateNotification | length >= 9) | map(
+[.marches[] | select(._type == "Marché" and (.titulaires? | length) > 0
+    and (.dateNotification | length >= 9)
+    and (.dateNotification | split("") | .[0] | tonumber >  0))]
+    | map(
 . as $m |
 
 (reduce .modifications[] as $mod ({};
