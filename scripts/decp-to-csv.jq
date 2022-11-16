@@ -12,8 +12,10 @@ def toDateEpoch(date):
 def fixDate(date):
     date |
     gsub("[\\+\\-]\\d\\d\\:\\d\\d$";"") |
+    gsub("^0219\\-|0209\\-|0019\\-";"2019-") |
     gsub("^0202\\-|0200\\-|0020\\-|220\\-";"2020-") |
-    gsub("^0219\\-|0209\\-|0019\\-";"2019-")
+    gsub("^0021\\-";"2021-") |
+    gsub("^0222\\-";"2022-")
     ;
 def getDate(date;other):
     fixDate(date) as $fixedDate |
