@@ -1,6 +1,6 @@
 # DECP Table Schema utils
 
-> Version 1.3.3
+> Version 1.3.4
 
 Ce dépôt rassemble les outils liés au schéma tabulaire des DECP.
 
@@ -27,12 +27,25 @@ La commande suivante :
   - `./decp/datapackage.json`
   - `./decp/decp.sqlite`
 
+Préparez votre environnement Python :
+
+```shell
+pipenv install
+pipenv shell
 ```
+
+Puis lancez la conversion :
+
+```shell
 python3 ./scripts/flow.py
 ```
 
 
 ## Notes de version
+
+### 1.3.4 (16/11/2022)
+
+- correction de dates malformées dans les données PES Marché (DGFiP)
 
 ### 1.3.3 (27/09/2021)
 
