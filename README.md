@@ -1,5 +1,7 @@
 # DECP Table Schema utils
 
+⚠️ Ce dépôt est remplacé par un projet un peu plus vaste, [decp-processing](https://github.com/ColinMaudry/decp-processing)
+
 > Version 1.3.4
 
 Ce dépôt rassemble les outils liés au schéma tabulaire des DECP.
